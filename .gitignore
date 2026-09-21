@@ -1,0 +1,16 @@
+# Material fuente y copias locales (traen datos personales de participantes; no se publican)
+fuentes/
+_archivo-previo/
+dist-canvas/
+node_modules/
+
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.vscode/
+.idea/
+
+# Carpeta antigua vacia (la deja abierta el editor); borrar a mano
+Portafolio/

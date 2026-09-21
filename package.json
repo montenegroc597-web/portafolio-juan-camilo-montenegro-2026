@@ -1,0 +1,13 @@
+{
+  "name": "portafolio-camilo-montenegro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portafolio de diseñador UX-UI y 3D (sitio estático para GitHub Pages).",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "npx --yes serve . -l 8080",
+    "canvas:build": "node herramientas/canvas/canvas.mjs build dist-canvas",
+    "canvas:sync": "node herramientas/canvas/canvas.mjs sync"
+  }
+}

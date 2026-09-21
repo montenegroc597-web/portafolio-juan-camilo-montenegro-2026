@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portafolio de Camilo Montenegro, diseñador UX-UI y 3D. Casos de estudio de producto digital y proyectos de modelado 3D.">
+<meta name="theme-color" content="#7C34B1">
+<title>Portafolio Camilo — Home</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./vendor/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+html, body { width: 100%; overflow-x: hidden; }
+html {
+  background-color: #F1ECF4;
+  background-image:
+    radial-gradient(820px 620px at 10% 12%, rgba(124,52,177,.10), transparent 68%),
+    radial-gradient(760px 560px at 92% 48%, rgba(16,89,168,.07), transparent 68%),
+    radial-gradient(700px 520px at 6% 86%, rgba(15,148,99,.06), transparent 68%);
+  background-attachment: fixed;
+}
+body {
+  background-color: transparent;
+  background-image:
+    linear-gradient(rgba(124,52,177,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,52,177,.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center top;
+}
+.edgedots { position: absolute; top: 0; width: 30px; height: 100%; z-index: 0; background-image: radial-gradient(circle, rgba(124,52,177,.22) 1.4px, transparent 1.6px); background-size: 30px 48px; -webkit-mask-image: linear-gradient(180deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(180deg, transparent, #000 5%, #000 95%, transparent); }
+.edgeline { position: absolute; top: 0; width: 1px; height: 100%; z-index: 0; background: linear-gradient(180deg, rgba(124,52,177,0), rgba(124,52,177,.22) 4%, rgba(124,52,177,.22) 96%, rgba(124,52,177,0)); }
+.bleed { box-shadow: -1100px 0 0 var(--bleed), 1100px 0 0 var(--bleed); }
+.fademask { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); }
+body { margin: 0; font-family: Inter, system-ui, sans-serif; background: #FFFFFF; color: #0B0B0F; -webkit-font-smoothing: antialiased; }
+a { color: #7C34B1; }
+a:hover { color: #5B2185; }
+section { scroll-snap-align: start; scroll-margin-top: 104px; }
+h1, h2, h3, .sora { font-family: Sora, Inter, system-ui, sans-serif; }
+.navlink { transition: background 180ms ease, color 180ms ease; }
+.navlink:hover { background: #FFFFFF; color: #0B0B0F; }
+.pill { transition: transform 200ms cubic-bezier(.2,.7,.3,1), box-shadow 200ms ease, background 200ms ease, color 200ms ease; }
+.pill:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(11,11,15,.14); }
+.cvbtn { transition: transform 200ms cubic-bezier(.2,.7,.3,1), box-shadow 200ms ease; }
+.cvbtn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(124,52,177,.38); }
+.modebtn { transition: transform 220ms cubic-bezier(.2,.7,.3,1), box-shadow 220ms ease; }
+.modebtn:hover { transform: scale(1.07) rotate(-5deg); box-shadow: 0 10px 26px rgba(124,52,177,.34); }
+.modebtn:focus-visible, .segbtn:focus-visible { outline: 2px solid #0B0B0F; outline-offset: 3px; }
+.segbtn { transition: background 220ms ease, color 220ms ease; }
+.segbtn[aria-pressed="false"]:hover { background: rgba(255,255,255,.78) !important; color: #0B0B0F !important; }
+.card { transition: transform 320ms cubic-bezier(.2,.7,.3,1), box-shadow 320ms ease; }
+[data-cursor] { cursor: none; }
+[data-topbar] { transition: transform 420ms cubic-bezier(.22,.75,.24,1); will-change: transform; }
+.cursor-dot { transition: opacity 200ms ease, transform 260ms cubic-bezier(.2,.7,.3,1); }
+@media (prefers-reduced-motion: reduce) { [data-topbar] { transition: none; } .cursor-dot { transition: none; } }
+.card:hover { transform: translateY(-8px) scale(1.012); box-shadow: 0 28px 60px rgba(0,0,0,.28); }
+.card:hover .cardzoom { transform: scale(1.06); }
+.cardzoom { transition: transform 520ms cubic-bezier(.2,.7,.3,1); }
+.dot { transition: width 260ms ease, background 260ms ease; }
+@keyframes sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.sweep { transform-origin: left center; animation-name: sweep; animation-timing-function: linear; animation-iteration-count: infinite; }
+@keyframes breathe { 0%, 100% { opacity: .5; } 50% { opacity: .85; } }
+.spot { animation: breathe 7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .sweep, .spot { animation: none; } }
+.track { transition: transform 780ms cubic-bezier(.33,.9,.28,1); will-change: transform; }
+.coverslide:hover { filter: none; }
+.coverslide:focus-visible { outline: 2px solid rgba(255,255,255,.7); outline-offset: 6px; border-radius: 24px; }
+.coverslide { transition: transform 780ms cubic-bezier(.33,.9,.28,1), opacity 780ms ease, filter 780ms ease; will-change: transform, opacity; }
+.marquee { display: flex; width: max-content; animation: slide 34s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+.marquee-slow { animation-duration: 52s; }
+@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes slideRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.marquee-right { animation-name: slide; animation-duration: 26s; }
+@keyframes rise { from { opacity: 0; transform: translateY(34px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes arrow { 0%,100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+.arrow { animation: arrow 2.4s ease-in-out infinite; }
+.stepitem { transition: transform 320ms cubic-bezier(.2,.7,.3,1); }
+.stepitem:hover { transform: translateY(-4px); }
+.steplabel { transition: letter-spacing 320ms ease; }
+.stepitem:hover .steplabel { letter-spacing: .012em; }
+@supports (animation-timeline: view()) {
+  .reveal { animation: rise both ease-out; animation-timeline: view(); animation-range: entry 8% cover 26%; }
+  .reveal-soft { animation: fade both ease-out; animation-timeline: view(); animation-range: entry 4% cover 24%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none; }
+  .reveal, .reveal-soft { animation: none; }
+  .arrow { animation: none; }
+  html { scroll-behavior: auto; scroll-snap-type: none; }
+}
+</style>
+</helmet>
+
+<div data-root="home" style="width: 1440px; height: {{pageH}}px; box-sizing: border-box; position: relative; margin: 0 auto; background: #FFFFFF; overflow: visible; box-shadow: 0 0 0 1px rgba(44,13,61,.07), 0 30px 90px rgba(44,13,61,.10);">
+
+
+<!-- decoración de márgenes -->
+<div class="edgeline" aria-hidden="true" style="left: -1px;"></div>
+<div class="edgeline" aria-hidden="true" style="right: -1px;"></div>
+<div class="edgedots" aria-hidden="true" style="left: -46px;"></div>
+<div class="edgedots" aria-hidden="true" style="right: -46px;"></div>
+
+<!-- ============ NAV ============ -->
+<header data-topbar="1" style="position: sticky; top: 0; z-index: 60; width: 1440px; height: 104px; box-sizing: border-box; padding: 0 72px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(11,11,15,.06);">
+  <div style="display: flex; align-items: center; gap: 14px; flex: 1;">
+    <button type="button" class="modebtn" onClick="{{toggleMode}}" data-cursor="{{swapCursor}}" aria-label="{{swapAria}}" style="position: relative; width: 56px; height: 56px; border-radius: 999px; border: 0; padding: 0; background: {{accent}}; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;">
+      <sc-if value="{{isUx}}" hint-placeholder-val="{{true}}">
+        <svg width="22" height="30" viewBox="0 0 22 30" fill="none" aria-hidden="true"><rect x="1.2" y="1.2" width="19.6" height="27.6" rx="4.4" stroke="#FFFFFF" stroke-width="2.4"></rect><rect x="7.6" y="24" width="6.8" height="1.9" rx=".95" fill="#FFFFFF"></rect></svg>
+      </sc-if>
+      <sc-if value="{{is3d}}" hint-placeholder-val="{{false}}">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M14 2.6 24.4 8v12L14 25.4 3.6 20V8L14 2.6Z" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"></path><path d="M3.6 8 14 13.6 24.4 8M14 13.6v11.8" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"></path></svg>
+      </sc-if>
+      <span aria-hidden="true" style="position: absolute; right: -5px; bottom: -5px; width: 22px; height: 22px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 2px 8px rgba(11,11,15,.24); display: flex; align-items: center; justify-content: center; color: {{accent}};"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4h8M7.6 1.6 10 4 7.6 6.4M10 8H2M4.4 5.6 2 8l2.4 2.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+    </button>
+    <div role="group" aria-label="Tipo de proyectos" style="display: flex; align-items: center; gap: 2px; background: rgba(124,52,177,.1); padding: 4px; border-radius: 999px;">
+      <button type="button" class="segbtn" onClick="{{goUx}}" aria-pressed="{{uxPressed}}" data-cursor="Ver UX-UI" style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 9px 15px; border-radius: 999px; border: 0; cursor: pointer; white-space: nowrap; background: {{uxBg}}; color: {{uxFg}};">UX-UI</button>
+      <button type="button" class="segbtn" onClick="{{go3d}}" aria-pressed="{{d3Pressed}}" data-cursor="Ver 3D" style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 9px 15px; border-radius: 999px; border: 0; cursor: pointer; white-space: nowrap; background: {{d3Bg}}; color: {{d3Fg}};">3D</button>
+    </div>
+  </div>
+  <nav style="display: flex; align-items: center; gap: 4px; background: #ECEAEE; border-radius: 999px; padding: 6px;">
+    <a class="navlink" data-cursor="Ir" href="#home" style="font-family: Sora, sans-serif; font-size: 17px; font-weight: 600; color: #0B0B0F; text-decoration: none; padding: 12px 30px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 2px 8px rgba(11,11,15,.08);">Home</a>
+    <a class="navlink" data-cursor="Ir" href="#proyectos" style="font-family: Sora, sans-serif; font-size: 17px; font-weight: 500; color: #4A4A55; text-decoration: none; padding: 12px 30px; border-radius: 999px;">Proyectos</a>
+    <a class="navlink" data-cursor="Ir" href="#quien-soy" style="font-family: Sora, sans-serif; font-size: 17px; font-weight: 500; color: #4A4A55; text-decoration: none; padding: 12px 30px; border-radius: 999px;">Quien soy</a>
+    <a class="navlink" data-cursor="Ir" href="#contacto" style="font-family: Sora, sans-serif; font-size: 17px; font-weight: 500; color: #4A4A55; text-decoration: none; padding: 12px 30px; border-radius: 999px;">Contacto</a>
+  </nav>
+  <div style="flex: 1; display: flex; justify-content: flex-end;"><a class="cvbtn" data-cursor="Descargar CV" href="./assets/docs/cv-camilo-montenegro.pdf" target="_blank" rel="noopener" download="CV_Camilo_Montenegro_Colombia.pdf" style="display: flex; align-items: center; gap: 10px; background: {{accent}}; color: #FFFFFF; font-family: Sora, sans-serif; font-size: 17px; font-weight: 600; text-decoration: none; padding: 14px 30px; border-radius: 999px;">CV
+    <svg width="15" height="16" viewBox="0 0 15 16" fill="none" aria-hidden="true"><path d="M7.5 1v12M2.4 8.3 7.5 13.6l5.1-5.3" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+  </a></div>
+</header>
+<div data-bar-spacer="1" aria-hidden="true" style="height: 0px;"></div>
+
+
+<!-- ============ NAV ============ -->
+
+
+<!-- ============ 1 · HERO ============ -->
+
+
+<!-- ============ 2 · PROYECTOS ============ -->
+<section id="home" style="width: 1440px; height: 796px; box-sizing: border-box; position: relative; display: flex; flex-direction: column; justify-content: space-between; overflow: visible;">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; padding: 64px 72px 0 72px; position: relative">
+    
+
+    <div class="reveal" style="width: 620px; padding-top: 48px; position: relative">
+      
+      <p style="margin: 0 0 26px 0; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #8A8A96;">Portafolio 2026</p><h1 style="margin: 0; font-family: Sora, sans-serif; font-size: 84px; line-height: .98; font-weight: 800; letter-spacing: -.03em; color: #0B0B0F;">Hola, soy<br><span style="color: {{accent}};">Camilo</span></h1>
+      <p style="margin: 40px 0 0 0; font-size: 26px; line-height: 1.42; font-weight: 600; color: #0B0B0F; max-width: 560px;">Antes de una solución, <span style="color: {{accent}};">hay un mapa: actores, conexiones, ciclos.</span> Encontrarlo es donde empieza mi diseño.</p>
+      <div style="display: flex; align-items: center; gap: 16px; margin-top: 44px;">
+        <a class="pill" href="#proyectos" style="display: inline-flex; align-items: center; gap: 12px; background: #0B0B0F; color: #FFFFFF; font-family: Sora, sans-serif; font-size: 17px; font-weight: 600; text-decoration: none; padding: 18px 34px; border-radius: 999px;" data-cursor="Explorar">Ver proyectos
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M4 13 13 4M5.6 4H13v7.4" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </a>
+        <a class="pill" href="#quien-soy" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 17px; font-weight: 600; text-decoration: none; padding: 17px 33px; border-radius: 999px; border: 1.5px solid rgba(11,11,15,.18);" data-cursor="Conocerme">Quien soy</a>
+      </div>
+    </div><div style="position: relative; width: 620px; height: 656px; flex-shrink: 0;">
+      
+      <div style="position: absolute; left: 8px; top: 221px; width: 604px; height: 435px; border-radius: 40px 40px 0 0; background: {{accent}};"></div>
+      <img src="./assets/home/hero-camilo-con-perro.webp" alt="Camilo con su perro" style="position: absolute; left: 48px; top: -88px; width: 561px; height: 817px; object-fit: contain">
+      
+      <div style="position: absolute; left: 6px; top: 199px; width: 604px; box-sizing: border-box; padding: 0 26px; display: flex; justify-content: space-between; align-items: flex-end; z-index: 4"><span style="font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; color: rgb(11, 11, 15)">Diseñador&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; UX-UI/3D</span>
+      </div>
+    </div>
+</div>
+
+  <div class="bleed" style="--bleed: #E4E2E6; position: absolute; left: 0; bottom: 0; width: 1440px; height: 118px; background: #E4E2E6; z-index: 30; display: flex; align-items: center;">
+    <div style="width: 100%; overflow: hidden;" class="fademask"><div class="marquee marquee-right" style="gap: 0; align-items: center;">
+      <sc-for list="{{steps}}" as="p" hint-placeholder-count="28">
+        <div class="stepitem" style="display: flex; align-items: center; gap: 26px; padding-right: 26px; flex-shrink: 0;">
+          <span style="display: flex; align-items: center; gap: 12px; white-space: nowrap;">
+            <span class="sora steplabel" style="font-size: 30px; font-weight: 700; white-space: nowrap; color: {{p.color}};">{{p.label}}</span>
+          </span>
+          <svg width="66" height="18" viewBox="0 0 72 18" fill="none" aria-hidden="true" style="flex-shrink: 0;"><path d="M0 9h66M58 2l8 7-8 7" stroke="{{p.arrow}}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </sc-for>
+    </div></div>
+  </div>
+</section><section id="proyectos" style="width: 1440px; height: 900px; box-sizing: border-box; background: {{accent}}; padding: 76px 72px; display: flex; flex-direction: column; gap: 40px;">
+  <div class="reveal-soft" style="display: flex; align-items: flex-end; justify-content: space-between;">
+    <div>
+      <p style="margin: 0 0 12px 0; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.72);">Selección de trabajo</p>
+      <h2 style="margin: 0; font-size: 76px; line-height: 1; font-weight: 800; letter-spacing: -.03em; color: #FFFFFF;">Proyectos</h2>
+    </div>
+    <p style="margin: 0; max-width: 430px; font-size: 19px; line-height: 1.55; color: rgba(255,255,255,.88); width: 500px">Dos formas de crear: productos digitales que entienden a sus actores, y assets 3D para videojuegos donde la técnica honra el concept visual.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; flex-grow: 1;">
+    <a class="card" data-cursor="Ver caso" onClick="{{setUx}}" href="#dreaming" style="position: relative; border-radius: 28px; overflow: hidden; outline: {{uxRing}}; outline-offset: -5px; background: linear-gradient(160deg, #E9E9EC 0%, #BFBFC6 100%); text-decoration: none; display: block;">
+      <img class="cardzoom" src="./assets/home/tarjeta-ux-ui-mockup.webp" alt="Mockup de app UX-UI en iPhone" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+      <span style="position: absolute; top: 28px; right: 32px; font-family: Sora, sans-serif; font-size: 34px; font-weight: 700; color: #0B0B0F;">UX-UI</span>
+      <span style="position: absolute; left: 28px; bottom: 28px; width: 62px; height: 62px; border-radius: 999px; background: {{accent}}; display: flex; align-items: center; justify-content: center;">
+        <svg width="20" height="28" viewBox="0 0 22 30" fill="none" aria-hidden="true"><rect x="1.2" y="1.2" width="19.6" height="27.6" rx="4.4" stroke="#FFFFFF" stroke-width="2.4"></rect><rect x="7.6" y="24" width="6.8" height="1.9" rx=".95" fill="#FFFFFF"></rect></svg>
+      </span>
+      <span style="position: absolute; left: 106px; bottom: 44px; font-family: Sora, sans-serif; font-size: 17px; font-weight: 600; color: #0B0B0F;">3 casos de producto</span>
+    </a>
+
+    <a class="card" data-cursor="Ver 3D" onClick="{{set3d}}" href="#scal" style="position: relative; border-radius: 28px; overflow: hidden; outline: {{d3Ring}}; outline-offset: -5px; background: #0C1521; text-decoration: none; display: block;">
+      <img class="cardzoom" src="./assets/home/tarjeta-3d-render.webp" alt="Render 3D de personaje" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+      <span style="position: absolute; top: 26px; right: 28px; width: 68px; height: 68px; border-radius: 999px; background: {{accent}}; display: flex; align-items: center; justify-content: center;">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M14 2.6 24.4 8v12L14 25.4 3.6 20V8L14 2.6Z" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"></path><path d="M3.6 8 14 13.6 24.4 8M14 13.6v11.8" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"></path></svg>
+      </span>
+      <span style="position: absolute; left: 32px; bottom: 30px; font-family: Sora, sans-serif; font-size: 34px; font-weight: 700; color: #FFFFFF;">3D</span>
+      <span style="position: absolute; left: 32px; bottom: 96px; font-family: Sora, sans-serif; font-size: 17px; font-weight: 600; color: rgba(255,255,255,.78);">Modelado y render</span>
+    </a>
+  </div>
+</section>
+
+<sc-if value="{{isUx}}" hint-placeholder-val="{{true}}">
+<!-- ============ 3 · DREAMING ============ -->
+<section id="dreaming" style="width: 1440px; height: 1260px; box-sizing: border-box; background: #EFE8EF; padding: 0; display: flex; flex-direction: column; overflow: hidden;">
+  <div style="height: 128px; flex-shrink: 0; background: #CFA3DF; border-radius: 0 0 44px 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 72px; box-sizing: border-box;">
+    <h2 style="margin: 0; font-size: 58px; font-weight: 800; letter-spacing: -.02em; color: #2C0D3D;">Dreaming</h2>
+    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;">
+      <span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #4A1B63;">Marketplace de impresión 3D · UX-UI</span>
+      <div style="display: flex; gap: 8px;">
+        <span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #4A1B63; border: 1px solid rgba(74,27,99,.35); padding: 6px 14px; border-radius: 999px;">Proyecto personal</span>
+        <span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #4A1B63; border: 1px solid rgba(74,27,99,.35); padding: 6px 14px; border-radius: 999px;">3 meses</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="display: flex; align-items: center; gap: 48px; padding: 40px 72px 28px 72px; flex-shrink: 0;">
+    <div style="flex-grow: 1;">
+      <p style="margin: 0; font-size: 23px; line-height: 1.54; color: #14121A; text-align: left">Dreaming nació de identificar a sus actores clave: <strong style="color: {{accent}};">makers (emprendedores de la impresión 3D), diseñadores 3D y consumidores</strong>, y ver que ninguno tenía un punto que los conectara.</p>
+      <p style="margin: 20px 0 0 0; font-size: 23px; line-height: 1.54; color: #14121A;">Dreaming es ese punto: <strong style="color: {{accent}};">un ecosistema</strong> donde los tres se necesitan y se benefician entre sí.</p>
+      <div style="display: flex; gap: 10px; margin-top: 24px;">
+        <span style="background: rgba(124,52,177,.1); color: #4A1B63; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 999px;">Research</span>
+        <span style="background: rgba(124,52,177,.1); color: #4A1B63; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 999px;">Mapa de actores</span>
+        <span style="background: rgba(124,52,177,.1); color: #4A1B63; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 999px;">App móvil</span>
+      </div>
+    </div>
+    <img src="./assets/dreaming/diagrama-ecosistema.webp" alt="Diagrama del ecosistema Dreaming: diseñador, maker y consumidor" style="width: 470px; height: auto; flex-shrink: 0;">
+  </div>
+
+  <div style="margin: 0 72px; background: #411854; border-radius: 32px; padding: 24px; box-sizing: border-box; flex-grow: 1; display: flex; flex-direction: column; overflow: hidden;">
+    <div style="flex-grow: 1; overflow: hidden; position: relative;">
+      <div class="spot" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 760px; height: 760px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(207,163,223,.30), transparent 62%); pointer-events: none;"></div>
+      <div aria-hidden="true" style="position: absolute; left: 50%; bottom: 0; width: 620px; height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, transparent, rgba(207,163,223,.5), transparent);"></div>
+      <div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;">
+        <sc-for list="{{dShots}}" as="sh" hint-placeholder-count="6">
+          <button type="button" class="coverslide" data-cursor="Ver pantalla" onClick="{{sh.go}}" aria-label="Ver {{sh.label}}" style="position: absolute; left: calc(50% - 150px); top: 0; width: 300px; height: 100%; display: flex; align-items: center; justify-content: center; background: none; border: 0; padding: 0; cursor: pointer; pointer-events: {{sh.pe}}; transform: {{sh.scale}}; opacity: {{sh.op}}; filter: {{sh.blur}}; z-index: {{sh.z}};">
+            <sc-if value="{{sh.hasImg}}" hint-placeholder-val="{{true}}">
+              <img src="{{sh.src}}" alt="{{sh.label}}" style="max-height: 100%; max-width: 100%; width: auto; height: auto; border-radius: 22px; box-shadow: 0 26px 60px rgba(0,0,0,.5);">
+            </sc-if>
+            <sc-if value="{{sh.empty}}" hint-placeholder-val="{{true}}">
+              <div style="width: 100%; height: 90%; border: 2px dashed rgba(255,255,255,.34); border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; text-align: center; padding: 12px; box-sizing: border-box;">
+                <span style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 700; line-height: 1.3; color: #FFFFFF;">{{sh.label}}</span>
+                <span style="font-size: 11px; color: rgba(255,255,255,.55);">390 × 844</span>
+              </div>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; flex-shrink: 0;">
+      <span style="flex: 1; font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.72); white-space: nowrap;">{{dLabel}}</span>
+      <span style="display: flex; align-items: center; gap: 9px;">
+      <sc-for list="{{dDots}}" as="d" hint-placeholder-count="6">
+        <button type="button" data-cursor="Cambiar vista" onClick="{{d.go}}" aria-label="Ver pantalla {{d.n}} de Dreaming" style="height: 10px; width: {{d.w}}; border-radius: 999px; border: 0; padding: 0; cursor: pointer; background: {{d.bg}};" class="dot"></button>
+      </sc-for>
+      </span>
+      <span style="flex: 1; text-align: right; font-family: Sora, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .14em; color: rgba(255,255,255,.72); white-space: nowrap;">{{dNum}} / 11</span>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 20px; justify-content: center; padding: 20px 0 26px 0; flex-shrink: 0;">
+    <a class="pill" href="casos/dreaming.html" data-cursor="Ver caso" style="display: inline-flex; align-items: center; gap: 12px; padding: 15px 36px; border-radius: 999px; border: 1.6px solid #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; color: #0B0B0F; text-decoration: none; background: transparent;">Ver Mas
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M4 13 13 4M5.6 4H13v7.4" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </a>
+    <a class="pill" href="https://youtu.be/RjReoJ-eSWs?si=5YjWaOJuIUCmv0KE" target="_blank" rel="noopener" data-cursor="Reproducir" style="display: inline-flex; align-items: center; gap: 12px; padding: 15px 36px; border-radius: 999px; border: 1.6px solid #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; color: #0B0B0F; text-decoration: none; background: transparent;">Ver Video
+      <svg width="15" height="16" viewBox="0 0 15 16" fill="none" aria-hidden="true"><path d="M2.6 2.2 13 8 2.6 13.8V2.2Z" stroke="#0B0B0F" stroke-width="2" stroke-linejoin="round"></path></svg>
+    </a>
+  </div>
+</section>
+
+<section id="nexo" style="width: 1440px; height: 1260px; box-sizing: border-box; background: #F2F6FB; padding: 0; display: flex; flex-direction: column; overflow: hidden;">
+  <div style="height: 128px; flex-shrink: 0; background: #70AADE; border-radius: 0 0 44px 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 72px; box-sizing: border-box;">
+    <h2 style="margin: 0; font-size: 58px; font-weight: 800; letter-spacing: -.02em; color: #06263F;">Nexo</h2>
+    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;">
+      <span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #06263F;">Crédito hiperpersonalizado · Plataforma</span>
+      <div style="display: flex; gap: 8px;">
+        <span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #06263F; border: 1px solid rgba(6,38,63,.32); padding: 6px 14px; border-radius: 999px;">Hackathon</span>
+        <span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #06263F; border: 1px solid rgba(6,38,63,.32); padding: 6px 14px; border-radius: 999px;">4 días</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="display: flex; align-items: center; gap: 48px; padding: 40px 72px 28px 72px; flex-shrink: 0;">
+    <img src="./assets/nexo/diagrama-ecosistema.webp" alt="Diagrama del ecosistema Nexo: analista de datos, afiliado y jefe de campañas" style="width: 470px; height: auto; flex-shrink: 0;">
+    <div style="flex-grow: 1;">
+      <p style="margin: 0; font-size: 23px; line-height: 1.54; color: #0B121A; text-align: right;">Nexo nació al ver que las entidades <strong style="color: #1059A8;">financieras tienen datos enormes sobre sus afiliados, pero les envían ofertas genéricas</strong> que ignoran su momento de vida real.</p>
+      <p style="margin: 20px 0 0 0; font-size: 23px; line-height: 1.54; color: #0B121A; text-align: right;">Nexo es el <strong style="color: #1059A8;">puente: cruza esos datos con las metas que el propio usuario declara</strong>, para ofrecer crédito explicable en el momento justo, como oportunidad y no como deuda.</p>
+      <div style="display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end;">
+        <span style="background: rgba(16,89,168,.1); color: #0B4585; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 999px;">Datos</span>
+        <span style="background: rgba(16,89,168,.1); color: #0B4585; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 999px;">Fintech</span>
+        <span style="background: rgba(16,89,168,.1); color: #0B4585; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 999px;">Dashboard</span>
+        <span style="background: rgba(16,89,168,.1); color: #0B4585; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 999px;">Vibe coding</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin: 0 72px; background: #0B4585; border-radius: 32px; padding: 24px; box-sizing: border-box; flex-grow: 1; display: flex; flex-direction: column; overflow: hidden;">
+    <div style="flex-grow: 1; overflow: hidden; position: relative;">
+      <div class="spot" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 760px; height: 760px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(112,170,222,.28), transparent 62%); pointer-events: none;"></div>
+      <div aria-hidden="true" style="position: absolute; left: 50%; bottom: 0; width: 620px; height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, transparent, rgba(112,170,222,.5), transparent);"></div>
+      <div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;">
+        <sc-for list="{{nShots}}" as="sh" hint-placeholder-count="5">
+          <button type="button" class="coverslide" data-cursor="Ver pantalla" onClick="{{sh.go}}" aria-label="Ver {{sh.label}}" style="position: absolute; left: calc(50% - 450px); top: 0; width: 900px; height: 100%; display: flex; align-items: center; justify-content: center; background: none; border: 0; padding: 0; cursor: pointer; pointer-events: {{sh.pe}}; transform: {{sh.scale}}; opacity: {{sh.op}}; filter: {{sh.blur}}; z-index: {{sh.z}};">
+            <img src="{{sh.src}}" alt="{{sh.label}}" style="max-height: 100%; max-width: 100%; width: auto; height: auto; border-radius: 16px; box-shadow: 0 26px 60px rgba(0,0,0,.42);">
+          </button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; flex-shrink: 0;">
+      <span style="flex: 1; font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.72); white-space: nowrap;">{{nLabel}}</span>
+      <span style="display: flex; align-items: center; gap: 9px;">
+      <sc-for list="{{nDots}}" as="d" hint-placeholder-count="5">
+        <button type="button" data-cursor="Cambiar vista" onClick="{{d.go}}" aria-label="Ver pantalla {{d.n}} de Nexo" style="height: 10px; width: {{d.w}}; border-radius: 999px; border: 0; padding: 0; cursor: pointer; background: {{d.bg}};" class="dot"></button>
+      </sc-for>
+      </span>
+      <span style="flex: 1; text-align: right; font-family: Sora, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .14em; color: rgba(255,255,255,.72); white-space: nowrap;">{{nNum}} / 5</span>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 20px; justify-content: center; padding: 20px 0 26px 0; flex-shrink: 0;">
+    <a class="pill" href="casos/nexo.html" data-cursor="Ver caso" style="display: inline-flex; align-items: center; gap: 12px; padding: 15px 36px; border-radius: 999px; border: 1.6px solid #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; color: #0B0B0F; text-decoration: none; background: transparent;">Ver Mas
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M4 13 13 4M5.6 4H13v7.4" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </a>
+    <a class="pill" href="https://youtu.be/3gttzTHwywI?si=E_W-jsrLirEuHFrz" target="_blank" rel="noopener" data-cursor="Reproducir" style="display: inline-flex; align-items: center; gap: 12px; padding: 15px 36px; border-radius: 999px; border: 1.6px solid #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; color: #0B0B0F; text-decoration: none; background: transparent;">Ver Video
+      <svg width="15" height="16" viewBox="0 0 15 16" fill="none" aria-hidden="true"><path d="M2.6 2.2 13 8 2.6 13.8V2.2Z" stroke="#0B0B0F" stroke-width="2" stroke-linejoin="round"></path></svg>
+    </a>
+  </div>
+</section>
+
+<section id="knoa" style="width: 1440px; height: 1260px; box-sizing: border-box; background: #EDF8F3; padding: 0; display: flex; flex-direction: column; overflow: hidden;">
+  <div style="height: 128px; flex-shrink: 0; background: #8DDEBA; border-radius: 0 0 44px 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 72px; box-sizing: border-box;">
+    <h2 style="margin: 0; font-size: 58px; font-weight: 800; letter-spacing: -.02em; color: #05341F;">Knoa</h2>
+    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;">
+      <span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #05341F;">Rutas de aprendizaje con IA · App</span>
+      <div style="display: flex; gap: 8px;">
+        <span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #05341F; border: 1px solid rgba(5,52,31,.32); padding: 6px 14px; border-radius: 999px;">Proyecto universitario</span>
+        <span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #05341F; border: 1px solid rgba(5,52,31,.32); padding: 6px 14px; border-radius: 999px;">2 meses</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="display: flex; align-items: center; gap: 48px; padding: 40px 72px 28px 72px; flex-shrink: 0;">
+    <div style="flex-grow: 1;">
+      <p style="margin: 0; font-size: 23px; line-height: 1.54; color: #0A1712;">KNOA nació de identificar el verdadero problema al estudiar por cuenta propia: no es la falta de información, <strong style="color: #0C7A52;">es el exceso, un mar infinito de opciones sin ninguna guía</strong>, el mismo rol que cumple una universidad.</p>
+      <p style="margin: 20px 0 0 0; font-size: 23px; line-height: 1.54; color: #0A1712;">KNOA es esa guía: con ayuda de un modelo de lenguaje, <strong style="color: #0C7A52;">perfila a cada usuario y le genera una ruta de aprendizaje</strong> completa, dándole control real sobre qué y cómo aprende.</p>
+      <div style="display: flex; gap: 10px; margin-top: 24px;">
+        <span style="background: rgba(12,122,82,.12); color: #075437; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 999px;">IA / LLM</span>
+        <span style="background: rgba(12,122,82,.12); color: #075437; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 999px;">EdTech</span>
+        <span style="background: rgba(12,122,82,.12); color: #075437; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 999px;">App móvil</span>
+      </div>
+    </div>
+    <img src="./assets/knoa/diagrama-ecosistema.webp" alt="Diagrama del ecosistema Knoa: usuario, agente KNOA y recursos" style="width: 470px; height: auto; flex-shrink: 0;">
+  </div>
+
+  <div style="margin: 0 72px; background: #0B5B3D; border-radius: 32px; padding: 24px; box-sizing: border-box; flex-grow: 1; display: flex; flex-direction: column; overflow: hidden;">
+    <div style="flex-grow: 1; overflow: hidden; position: relative;">
+      <div class="spot" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 760px; height: 760px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(141,222,186,.26), transparent 62%); pointer-events: none;"></div>
+      <div aria-hidden="true" style="position: absolute; left: 50%; bottom: 0; width: 620px; height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, transparent, rgba(141,222,186,.5), transparent);"></div>
+      <div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;">
+        <sc-for list="{{kShots}}" as="sh" hint-placeholder-count="6">
+          <button type="button" class="coverslide" data-cursor="Ver pantalla" onClick="{{sh.go}}" aria-label="Ver {{sh.label}}" style="position: absolute; left: calc(50% - 150px); top: 0; width: 300px; height: 100%; display: flex; align-items: center; justify-content: center; background: none; border: 0; padding: 0; cursor: pointer; pointer-events: {{sh.pe}}; transform: {{sh.scale}}; opacity: {{sh.op}}; filter: {{sh.blur}}; z-index: {{sh.z}};">
+            <img src="{{sh.src}}" alt="{{sh.label}}" style="max-height: 100%; max-width: 100%; width: auto; height: auto; border-radius: 22px; box-shadow: 0 26px 60px rgba(0,0,0,.42);">
+          </button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; flex-shrink: 0;">
+      <span style="flex: 1; font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.72); white-space: nowrap;">{{kLabel}}</span>
+      <span style="display: flex; align-items: center; gap: 9px;">
+      <sc-for list="{{kDots}}" as="d" hint-placeholder-count="6">
+        <button type="button" data-cursor="Cambiar vista" onClick="{{d.go}}" aria-label="Ver pantalla {{d.n}} de Knoa" style="height: 10px; width: {{d.w}}; border-radius: 999px; border: 0; padding: 0; cursor: pointer; background: {{d.bg}};" class="dot"></button>
+      </sc-for>
+      </span>
+      <span style="flex: 1; text-align: right; font-family: Sora, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .14em; color: rgba(255,255,255,.72); white-space: nowrap;">{{kNum}} / 7</span>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 20px; justify-content: center; padding: 20px 0 26px 0; flex-shrink: 0;">
+    <a class="pill" href="casos/knoa.html" data-cursor="Ver caso" style="display: inline-flex; align-items: center; gap: 12px; padding: 15px 36px; border-radius: 999px; border: 1.6px solid #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; color: #0B0B0F; text-decoration: none; background: transparent;">Ver Mas
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M4 13 13 4M5.6 4H13v7.4" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </a>
+  </div>
+</section>
+</sc-if>
+
+<!-- ============ 3D · PROYECTOS DE MODELADO ============ -->
+<sc-if value="{{is3d}}" hint-placeholder-val="{{false}}">
+<section id="scal" style="width: 1440px; height: 1394px; box-sizing: border-box; background: #050A1E; padding: 0; display: flex; flex-direction: column; overflow: hidden;">
+  <div style="height: 128px; flex-shrink: 0; background: #B7BEF2; border-radius: 0 0 44px 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 72px; box-sizing: border-box;"><h2 style="margin: 0; font-size: 58px; font-weight: 800; letter-spacing: -.02em; color: #101A6B;">Scal</h2><div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;"><span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #101A6B;">Modelado 3D · personaje y entorno</span><div style="display: flex; gap: 8px;"><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #101A6B; border: 1px solid rgba(16,26,107,.35); padding: 6px 14px; border-radius: 999px;">Competencia</span><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #101A6B; border: 1px solid rgba(16,26,107,.35); padding: 6px 14px; border-radius: 999px;">3 semanas</span></div></div></div>
+  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><img src="./assets/3d/scal/escena-principal.webp" alt="Escena principal de Scal con el personaje y el letrero" style="width: 100%; height: 729px; object-fit: cover; border-radius: 26px; display: block; margin-top: 0px;"><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 26px;"><img src="./assets/3d/scal/personaje-primer-plano.webp" alt="Primer plano del personaje de Scal" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/scal/diorama-casas-medievales.webp" alt="Diorama de casas medievales" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/scal/escena-nocturna-farol.webp" alt="Escena nocturna con farol" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">Scal nació en una competencia de modelado 3D de tres semanas. A partir de un concept base, el reto fue reinterpretarlo y trabajar bajo presión para cumplir con las estrictas métricas de un jurado. Es un trabajo 100% de mi autoría: cada detalle fue modelado por mí, sin assets externos.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="https://www.artstation.com/artwork/98Odwy" target="_blank" rel="noopener" data-cursor="Abrir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a></div></div></div></div>
+</section>
+
+<section id="kora" style="width: 1440px; height: 1792px; box-sizing: border-box; background: #223E18; padding: 0; display: flex; flex-direction: column; overflow: hidden;">
+  <div style="height: 128px; flex-shrink: 0; background: #C3DBAC; border-radius: 0 0 44px 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 72px; box-sizing: border-box;"><h2 style="margin: 0; font-size: 58px; font-weight: 800; letter-spacing: -.02em; color: #21400F;">Kora</h2><div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;"><span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #21400F;">Personajes y props · videojuego</span><div style="display: flex; gap: 8px;"><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #21400F; border: 1px solid rgba(33,64,15,.35); padding: 6px 14px; border-radius: 999px;">Videojuego</span><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #21400F; border: 1px solid rgba(33,64,15,.35); padding: 6px 14px; border-radius: 999px;">Pipeline completo</span></div></div></div>
+  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><img src="./assets/3d/kora/menu-del-juego.webp" alt="Menú principal del videojuego Köra" style="width: 1302px; height: 405px; object-fit: cover; border-radius: 22px; display: block; object-position: 50% 17.7108%"><p style="margin: 12px 0 0 0; font-size: 15px; line-height: 2.25; color: rgba(255,255,255,.52); text-align: left; margin-top: 0px; margin-bottom: 6px">Menú del juego · arte hecho por DanielArt (concept artist de Kora).</p><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 0px;"><img src="./assets/3d/kora/personaje-kora-pose-a.webp" alt="Kora, personaje principal, en pose A" style="width: 100%; height: 497px; object-fit: cover; border-radius: 20px; display: block; object-position: 53.4031% 50%"><img src="./assets/3d/kora/enemigo-acorazado-rojo.webp" alt="Enemigo acorazado en rojo" style="width: 100%; height: 497px; object-fit: cover; border-radius: 20px; display: block; object-position: 50.4626% 50%"><img src="./assets/3d/kora/enemigo-acorazado-maza.webp" alt="Enemigo acorazado con maza" style="width: 100%; height: 497px; object-fit: cover; border-radius: 20px; display: block; object-position: 51.4009% 50%"></div><img src="./assets/3d/kora/props-y-vegetacion.webp" alt="Props y vegetación del universo de Kora" style="width: 100%; height: 334px; object-fit: cover; border-radius: 26px; display: block; margin-top: 26px;"><div style="display: flex; justify-content: center; margin-top: 26px;"></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">Kora ha sido mi proyecto más ambicioso en el desarrollo de personajes y props 3D. Fue un reto integral en el que tuve que dominar la optimización topológica para garantizar un rendimiento perfecto en motores de videojuegos. Lideré todo el pipeline de producción: desde la retopología, rigging y texturizado de los assets, hasta la creación del concepto original del videojuego, diseñando un universo visual inspirado profundamente en el folclor amazónico.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="#kora" data-cursor="Estamos trabajando en ello" aria-disabled="true" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a><a class="pill" href="https://www.youtube.com/watch?v=kMXU-7kmOMk" target="_blank" rel="noopener" data-cursor="Reproducir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Ver Trailer<svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5.4 3.2 16 10 5.4 16.8V3.2Z" stroke="#0B0B0F" stroke-width="1.9" stroke-linejoin="round"></path></svg></a></div></div></div></div>
+</section>
+
+<section id="a-new-hope" style="width: 1440px; height: 1457px; box-sizing: border-box; background: #08080A; padding: 0; display: flex; flex-direction: column; overflow: hidden;">
+  <div style="height: 128px; flex-shrink: 0; background: #D3D3D9; border-radius: 0 0 44px 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 72px; box-sizing: border-box;"><h2 style="margin: 0; font-size: 58px; font-weight: 800; letter-spacing: -.02em; color: #1A1A1F;">A New Hope</h2><div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;"><span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #1A1A1F;">Personaje game-ready · hand-painted</span><div style="display: flex; gap: 8px;"><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #1A1A1F; border: 1px solid rgba(26,26,31,.35); padding: 6px 14px; border-radius: 999px;">Proyecto académico</span><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #1A1A1F; border: 1px solid rgba(26,26,31,.35); padding: 6px 14px; border-radius: 999px;">Rigging propio</span></div></div></div>
+  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><img src="./assets/3d/a-new-hope/personaje-con-sable.webp" alt="Personaje de A New Hope con sable de luz" style="width: 100%; height: 729px; object-fit: cover; border-radius: 26px; display: block; margin-top: 0px;"><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 26px;"><img src="./assets/3d/a-new-hope/casco-luz-roja-y-azul.webp" alt="Primer plano del casco bajo luz roja y azul" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/a-new-hope/contraluz-rojo-espalda.webp" alt="Contraluz rojo del personaje de espaldas" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/a-new-hope/personaje-completo-sable-encendido.webp" alt="Personaje completo con el sable encendido" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">A New Hope nació como un proyecto académico de temática libre. Aproveché este espacio como un reto personal para desarrollar un personaje game-ready, completamente funcional para videojuegos, abarcando todo el proceso técnico, incluyendo el rigging. Para lograr una dirección de arte similar a la de la serie Arcane, tanto las texturas como los mapas de normales fueron pintados meticulosamente a mano.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="https://www.artstation.com/artwork/QX1gBx" target="_blank" rel="noopener" data-cursor="Abrir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a></div></div></div></div>
+</section>
+
+<section id="gladiator" style="width: 1440px; height: 820px; box-sizing: border-box; background: linear-gradient(180deg, #3D0912 0%, #6E0F1C 100%); padding: 0; display: flex; flex-direction: column; overflow: hidden;">
+  <div style="height: 128px; flex-shrink: 0; background: #F0B2AD; border-radius: 0 0 44px 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 72px; box-sizing: border-box;"><h2 style="margin: 0; font-size: 58px; font-weight: 800; letter-spacing: -.02em; color: #5C0E13;">Gladiator</h2><div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;"><span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #5C0E13;">Escultura digital · impresión 3D</span><div style="display: flex; gap: 8px;"><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #5C0E13; border: 1px solid rgba(92,14,19,.35); padding: 6px 14px; border-radius: 999px;">Sculpting</span><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #5C0E13; border: 1px solid rgba(92,14,19,.35); padding: 6px 14px; border-radius: 999px;">Estilizado</span></div></div></div>
+  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 0px;"><img src="./assets/3d/gladiator/gladiador-escudo-frontal.webp" alt="Gladiador con escudo, vista frontal" style="width: 100%; height: 414px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/gladiator/gladiador-base-circular.webp" alt="Gladiador sobre base circular" style="width: 100%; height: 414px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/gladiator/gladiador-tridente.webp" alt="Gladiador con tridente" style="width: 100%; height: 414px; object-fit: cover; border-radius: 20px; display: block;"></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">Concebido como una práctica de esculpido digital puro, el objetivo fue crear un personaje de estética estilizada optimizado para impresión 3D. El modelo se desarrolló íntegramente mediante sculpting, y se complementó la presentación visual experimentando con un sistema de nodos para el fondo.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="https://www.artstation.com/artwork/xYw5V4" target="_blank" rel="noopener" data-cursor="Abrir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a></div></div></div></div>
+</section>
+</sc-if>
+
+<section id="quien-soy" style="width: 1440px; height: 900px; box-sizing: border-box; background: #EFE8EF; display: flex; flex-direction: column; justify-content: space-between; overflow: visible;">
+  <div class="reveal" style="display: flex; align-items: flex-start; justify-content: space-between; padding: 72px 72px 0 72px; position: relative">
+    <div style="width: 700px;">
+      <p style="margin: 0 0 14px 0; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #7A6E85;">Quien soy</p>
+      <h2 style="margin: 0 0 30px 0; font-size: 68px; line-height: 1.02; font-weight: 800; letter-spacing: -.03em; color: #0B0B0F;">Un poco mas<br>de mi</h2>
+      <p style="margin: 0; font-size: 21px; line-height: 1.58; color: #14121A;">Soy Diseñador Industrial en la Javeriana, con un perfil híbrido entre diseño y desarrollo. Soy una persona <strong style="color: {{accent}};">apasionada</strong>, con una <strong style="color: {{accent}};">curiosidad intelectual</strong> que no se conforma fácilmente y una <strong style="color: {{accent}};">visión clara de hacia dónde quiero llegar</strong>. No le temo a los retos: aprendo lo que haga falta para resolverlos. Para mí, diseñar es <strong style="color: {{accent}};">entender qué compone realmente un producto</strong> antes de proponer una solución.</p>
+      <div style="display: flex; gap: 34px; margin-top: 34px;">
+        <div>
+          <p style="margin: 0; font-family: Sora, sans-serif; font-size: 36px; font-weight: 800; color: {{accent}};">3</p>
+          <p style="margin: 4px 0 0 0; font-size: 15px; color: #4A4553;">proyectos de producto Digital</p><p style="margin: 0; font-family: Sora, sans-serif; font-size: 36px; font-weight: 800; color: {{accent}};">+5</p>
+<p style="margin: 4px 0 0 0; font-size: 15px; color: #4A4553;">proyectos de modelado 3D</p>
+        </div>
+        <div style="width: 1px; background: rgba(11,11,15,.12);"></div>
+        <div>
+          <p style="margin: 0; font-family: Sora, sans-serif; font-size: 36px; font-weight: 800; color: {{accent}};">2</p>
+          <p style="margin: 4px 0 0 0; font-size: 15px; color: #4A4553;">idiomas · ES / EN</p>
+        </div>
+        <div style="width: 1px; background: rgba(11,11,15,.12);"></div>
+        <div>
+          <p style="margin: 0; font-family: Sora, sans-serif; font-size: 36px; font-weight: 800; color: {{accent}};">UX+Dev+3D</p>
+          <p style="margin: 4px 0 0 0; font-size: 15px; color: #4A4553;">perfil híbrido</p>
+        </div>
+      </div>
+    </div>
+    
+  <div style="position: relative; width: 540px; height: 470px; flex-shrink: 0;">
+      <div style="position: absolute; right: 0; top: 106px; width: 404px; height: 396px; border-radius: 36px; background: {{accent}}"></div>
+      
+    </div><img src="./assets/home/avatar-3d-camilo.webp" alt="Avatar 3D de Camilo" style="position: absolute; top: -23px; height: 596px; width: 397px; left: 974px"></div>
+
+  <div>
+    <h3 style="margin: 0 72px 18px 72px; text-align: right; font-size: 40px; font-weight: 800; letter-spacing: -.02em; color: #0B0B0F;">Herramientas</h3>
+    <div class="bleed" style="--bleed: {{accent}}; background: {{accent}}; padding: 18px 0;">
+      <div style="width: 100%; overflow: hidden;" class="fademask"><div class="marquee" style="gap: 18px;">
+        <sc-for list="{{tools}}" as="t" hint-placeholder-count="14">
+          <div style="width: 148px; height: 106px; flex-shrink: 0; background: #FFFFFF; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
+            <img src="{{t.src}}" alt="{{t.name}}" style="height: 40px; width: auto; object-fit: contain;">
+            <span style="font-size: 12px; font-weight: 500; color: #3A3A44;">{{t.name}}</span>
+          </div>
+        </sc-for>
+      </div></div>
+    </div>
+  </div>
+</section><section id="contacto" style="width: 1440px; height: 900px; box-sizing: border-box; background: #EFE8EF; display: flex; flex-direction: column; justify-content: space-between; overflow: visible;">
+  <div style="padding: 66px 0 0 0;">
+    <div style="padding: 0 72px;">
+      <p style="margin: 0 0 12px 0; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #7A6E85;">Referencias</p>
+      <h3 style="margin: 0 0 26px 0; font-size: 52px; font-weight: 800; letter-spacing: -.02em; color: #0B0B0F;">Cosas que me describen</h3>
+    </div>
+    <div class="bleed" style="--bleed: {{accent}}; background: {{accent}}; padding: 20px 0;">
+      <div style="width: 100%; overflow: hidden;" class="fademask"><div class="marquee marquee-slow" style="gap: 20px;">
+        <sc-for list="{{refs}}" as="r" hint-placeholder-count="16">
+          <img src="{{r.src}}" alt="{{r.name}}" style="height: 186px; width: auto; border-radius: 10px; flex-shrink: 0; object-fit: cover;">
+        </sc-for>
+      </div></div>
+    </div>
+    <p style="margin: 20px 72px 0 72px; font-size: 16px; color: #5A5364; max-width: 700px;">"Detrás del diseñador hay puros contrastes. Estos datos curiosos definen cómo soy: desde la disciplina literal del gimnasio, hasta la conexión conceptual con historias como <i data-path-to-node="1,0,0" data-index-in-node="210">La La Land</i>. Mira el trasfondo de cada imagen y me conocerás un poco más."</p>
+  </div>
+
+  <footer class="bleed" style="--bleed: {{accent}}; background: {{accent}}; padding: 48px 72px; display: flex; flex-direction: column; gap: 30px;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between;">
+      <div>
+        <p style="margin: 0 0 8px 0; font-family: Sora, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.7);">Contacto</p>
+        <p style="margin: 0; font-family: Sora, sans-serif; font-size: 44px; font-weight: 800; letter-spacing: -.02em; color: #FFFFFF;">Hablemos de tu próximo producto</p>
+      </div>
+      <a class="cvbtn" data-cursor="Descargar CV" href="./assets/docs/cv-camilo-montenegro.pdf" target="_blank" rel="noopener" download="CV_Camilo_Montenegro_Colombia.pdf" style="display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; color: {{accent}}; font-family: Sora, sans-serif; font-size: 17px; font-weight: 700; text-decoration: none; padding: 16px 32px; border-radius: 999px; flex-shrink: 0;">Descargar CV
+      <svg width="15" height="16" viewBox="0 0 15 16" fill="none" aria-hidden="true"><path d="M7.5 1v12M2.4 8.3 7.5 13.6l5.1-5.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </a>
+    </div>
+    <div style="height: 1px; background: rgba(255,255,255,.28);"></div>
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-size: 15px; color: rgba(255,255,255,.75);">Camilo · Diseñador de producto · Bogotá, Colombia</span>
+      <div style="display: flex; gap: 34px;">
+        <a href="https://www.linkedin.com/in/camilo-montenegro-b5810827a" target="_blank" rel="noopener" data-cursor="Abrir" style="font-family: Sora, sans-serif; font-size: 17px; font-weight: 600; color: #FFFFFF; text-decoration: none; letter-spacing: .04em;">LINKEDIN</a>
+        <a href="mailto:Montenegroc597@gmail.com" data-cursor="Escribir" style="font-family: Sora, sans-serif; font-size: 17px; font-weight: 600; color: #FFFFFF; text-decoration: none; letter-spacing: .04em;">EMAIL</a>
+        <a href="https://github.com/montenegroc597-web" target="_blank" rel="noopener" data-cursor="Abrir" style="font-family: Sora, sans-serif; font-size: 17px; font-weight: 600; color: #FFFFFF; text-decoration: none; letter-spacing: .04em;">GITHUB</a>
+        
+      </div>
+    </div>
+  </footer>
+</section>
+
+<!-- ============ 7 · REFERENCIAS + CONTACTO ============ -->
+
+
+<!-- cursor seguidor -->
+<div role="status" aria-live="polite" style="position: fixed; left: 50%; bottom: 36px; transform: translateX(-50%) translateY({{toastY}}); opacity: {{toastO}}; transition: opacity 260ms ease, transform 320ms cubic-bezier(.2,.7,.3,1); z-index: 95; pointer-events: none; background: #0B0B0F; color: #FFFFFF; font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; padding: 14px 26px; border-radius: 999px; display: flex; align-items: center; gap: 12px; white-space: nowrap; box-shadow: 0 16px 40px rgba(11,11,15,.28);"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: {{accent}}; flex-shrink: 0;"></span>{{toastText}}</div>
+
+<div data-cursor-follower="1" class="cursor-dot" style="position: absolute; left: 0px; top: -19px; z-index: 90; pointer-events: none; opacity: {{cursorOn}}; transform: translate3d(-200px, -200px, 0)">
+  <div style="position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-radius: 999px; background: {{accent}};"></div>
+  <div style="position: absolute; left: 18px; top: 10px; display: flex; align-items: center; gap: 9px; background: {{accent}}; padding: 10px 18px; border-radius: 999px; white-space: nowrap; box-shadow: 0 10px 26px rgba(11,11,15,.24);">
+    <span style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #FFFFFF;">{{cursorLabel}}</span>
+    <svg width="13" height="13" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M4 13 13 4M5.6 4H13v7.4" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+  </div>
+</div>
+
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#7C34B1","options":["#7C34B1","#1059A8","#0F9463","#0B0B0F"],"section":"Marca"},"autoplay":{"editor":"boolean","default":true,"section":"Carruseles"},"speed":{"editor":"range","default":5,"min":3,"max":12,"step":1,"unit":"s","section":"Carruseles"},"$preview":{"width":1440,"height":7380}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { d: 0, n: 0, k: 0, cursorLabel: '', mode: 'uxui', toastOn: false, toastText: '' };
+    this.lastY = 0;
+  }
+
+  componentDidMount() {
+    if (this.props.autoplay !== false) {
+      var ms = ((this.props.speed ?? 5) * 1000) / 1.15;
+      this.timer = setInterval(function () {
+        this.setState(function (s) {
+          return { d: (s.d + 1) % 11, n: (s.n + 1) % 5, k: (s.k + 1) % 7 };
+        });
+      }.bind(this), ms);
+    }
+
+    var root = document.querySelector('[data-root="home"]');
+    if (!root) return;
+    this.root = root;
+    this.follower = document.querySelector('[data-cursor-follower]');
+    this.bar = document.querySelector('[data-topbar]');
+    this.spacer = document.querySelector('[data-bar-spacer]');
+    this.fixedMode = false;
+    this.barScale = 1;
+    this.barHidden = false;
+
+    this.onMove = function (e) {
+      if (!this.follower) return;
+      var r = this.root.getBoundingClientRect();
+      var scale = r.width / 1440 || 1;
+      var x = (e.clientX - r.left) / scale;
+      var y = (e.clientY - r.top) / scale;
+      this.follower.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+    }.bind(this);
+
+    this.onOver = function (e) {
+      var el = e.target && e.target.closest ? e.target.closest('[data-cursor]') : null;
+      var label = el ? el.getAttribute('data-cursor') : '';
+      if (label !== this.state.cursorLabel) this.setState({ cursorLabel: label });
+    }.bind(this);
+
+    this.onOut = function () {
+      if (this.state.cursorLabel) this.setState({ cursorLabel: '' });
+    }.bind(this);
+
+    this.applyBar = function (hidden) {
+      var t = hidden ? 'translateY(-140%)' : 'translateY(0)';
+      if (this.fixedMode) t += ' scale(' + this.barScale + ')';
+      this.bar.style.transform = t;
+      this.barHidden = hidden;
+    }.bind(this);
+
+    this.fit = function () {
+      if (!this.root) return;
+      var host = this.root.parentElement;
+      var avail = host ? host.clientWidth : 0;
+      if (!avail) return;
+      var k = avail >= 1440 ? 1 : Math.max(0.3, avail / 1440);
+      this.root.style.zoom = k;
+      this.pageScale = k;
+    }.bind(this);
+
+    this.onScroll = function () {
+      if (!this.bar || !this.root) return;
+      var r = this.root.getBoundingClientRect();
+      var y = -r.top;
+
+      // ¿el sticky no está funcionando? lo pasamos a fixed nosotros
+      if (!this.fixedMode && y > 40) {
+        var b = this.bar.getBoundingClientRect();
+        if (b.top < -2) {
+          this.barScale = (r.width / 1440) || 1;
+          this.bar.style.position = 'fixed';
+          this.bar.style.top = '0px';
+          this.bar.style.left = r.left + 'px';
+          this.bar.style.transformOrigin = 'top left';
+          this.fixedMode = true;
+          if (this.spacer) this.spacer.style.height = '104px';
+        }
+      }
+      if (this.fixedMode) {
+        this.bar.style.left = r.left + 'px';
+        this.barScale = (r.width / 1440) || 1;
+      }
+
+      if (y <= 10) {
+        this.applyBar(false);
+      } else if (y > this.lastY + 4 && y > 140) {
+        this.applyBar(true);
+      } else if (y < this.lastY - 4) {
+        this.applyBar(false);
+      }
+      this.lastY = y;
+    }.bind(this);
+
+    root.addEventListener('mousemove', this.onMove);
+    root.addEventListener('mouseover', this.onOver);
+    root.addEventListener('mouseleave', this.onOut);
+    this.fit();
+    window.addEventListener('resize', this.fit);
+    if (window.ResizeObserver && root.parentElement) {
+      this.ro = new ResizeObserver(this.fit);
+      this.ro.observe(root.parentElement);
+    }
+    window.addEventListener('scroll', this.onScroll, true);
+    window.addEventListener('wheel', this.onScroll, { passive: true });
+  }
+
+  componentWillUnmount() {
+    if (this.timer) clearInterval(this.timer);
+    if (this.toastTimer) clearTimeout(this.toastTimer);
+    if (this.root) {
+      this.root.removeEventListener('mousemove', this.onMove);
+      this.root.removeEventListener('mouseover', this.onOver);
+      this.root.removeEventListener('mouseleave', this.onOut);
+    }
+    window.removeEventListener('resize', this.fit);
+    if (this.ro) this.ro.disconnect();
+    window.removeEventListener('scroll', this.onScroll, true);
+    window.removeEventListener('wheel', this.onScroll);
+  }
+
+  goMode(m) {
+    if (this.state.mode !== m) this.setState({ mode: m });
+    this.showToast(m === '3d' ? 'Mostrando proyectos 3D' : 'Mostrando proyectos UX-UI');
+    var id = m === '3d' ? 'scal' : 'dreaming';
+    setTimeout(function () {
+      var el = document.getElementById(id);
+      if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 90);
+  }
+
+  showToast(t) {
+    if (this.toastTimer) clearTimeout(this.toastTimer);
+    this.setState({ toastText: t, toastOn: true });
+    this.toastTimer = setTimeout(function () { this.setState({ toastOn: false }); }.bind(this), 2400);
+  }
+
+  setMode(m) {
+    if (this.state.mode !== m) this.setState({ mode: m });
+  }
+
+  dots(key, active, count) {
+    var out = [];
+    var total = count || 4;
+    for (var i = 0; i < total; i++) {
+      out.push({
+        n: i + 1,
+        w: i === active ? '32px' : '10px',
+        bg: i === active ? '#FFFFFF' : 'rgba(255,255,255,0.38)',
+        go: function (idx) {
+          var patch = {};
+          patch[key] = idx;
+          this.setState(patch);
+        }.bind(this, i)
+      });
+    }
+    return out;
+  }
+
+  renderVals() {
+    var HUX = 7380, H3D = 9063;
+    var s = this.state;
+    var self = this;
+    function cover(list, active, key, step) {
+      var n = list.length;
+      return list.map(function (x, i) {
+        var off = i - active;
+        off = ((off + n / 2) % n + n) % n - n / 2;
+        var dist = Math.abs(off);
+        var center = dist === 0;
+        var near = dist === 1;
+        return {
+          label: x.label,
+          src: x.src,
+          hasImg: !!x.src,
+          empty: !x.src,
+          scale: 'translateX(' + (off * step) + 'px) ' + (center ? 'scale(1)' : (near ? 'scale(0.84)' : 'scale(0.7)')),
+          op: center ? '1' : (near ? '0.5' : '0'),
+          blur: center ? 'none' : 'blur(2.5px)',
+          z: center ? '3' : (near ? '2' : '1'),
+          pe: dist <= 1 ? 'auto' : 'none',
+          go: function () {
+            var patch = {};
+            patch[key] = i;
+            self.setState(patch);
+          }
+        };
+      });
+    }
+    var W = 1276;
+    var tools = [
+      { name: 'Figma', src: './assets/home/herramientas/figma.webp' },
+      { name: 'Claude Code', src: './assets/home/herramientas/claude-code.webp' },
+      { name: 'Supabase', src: './assets/home/herramientas/supabase.webp' },
+      { name: 'Blender', src: './assets/home/herramientas/blender.webp' },
+      { name: 'Photoshop', src: './assets/home/herramientas/photoshop.webp' },
+      { name: 'Premiere', src: './assets/home/herramientas/premiere.webp' },
+      { name: 'Fusion 360', src: './assets/home/herramientas/fusion-360.webp' }
+    ];
+    var refs = [
+      { name: 'La La Land', src: './assets/home/referencias/la-la-land.webp' },
+      { name: 'Whiplash', src: './assets/home/referencias/whiplash.webp' },
+      { name: 'En busca de la felicidad', src: './assets/home/referencias/en-busca-de-la-felicidad.webp' },
+      { name: 'Ilustración', src: './assets/home/referencias/ilustracion.webp' },
+      { name: 'Entrenamiento', src: './assets/home/referencias/entrenamiento.webp' },
+      { name: 'Pixar', src: './assets/home/referencias/pixar.webp' },
+      { name: 'Baile', src: './assets/home/referencias/baile.webp' },
+      { name: 'El método Lean Startup', src: './assets/home/referencias/lean-startup.webp' }
+    ];
+    var dList = [
+      { label: 'Home · Mercado', src: './assets/dreaming/pantallas/mercado.webp' },
+      { label: 'Pedidos · Seguimiento', src: './assets/dreaming/pantallas/pedidos.webp' },
+      { label: 'Creaciones · Subir archivo 3D', src: './assets/dreaming/pantallas/creaciones-subir-archivo.webp' },
+      { label: 'Cotización de una pieza', src: './assets/dreaming/pantallas/cotizacion-pieza.webp' },
+      { label: 'Home · Diseñador', src: './assets/dreaming/pantallas/home-disenador.webp' },
+      { label: 'Dashboard de ventas', src: './assets/dreaming/pantallas/dashboard-ventas.webp' },
+      { label: 'Crear producto', src: './assets/dreaming/pantallas/crear-producto.webp' },
+      { label: 'Creación en una sola vista', src: './assets/dreaming/iteracion-despues-creacion.webp' },
+      { label: 'Opciones personalizables', src: './assets/dreaming/pantallas/opciones-personalizables.webp' },
+      { label: 'Colores disponibles', src: './assets/dreaming/pantallas/colores-disponibles.webp' },
+      { label: 'Home · Maker', src: './assets/dreaming/pantallas/home-maker.webp' }
+    ];
+    var nList = [
+      { label: 'Oportunidades · Vista general', src: './assets/nexo/pantallas/oportunidades-vista-general.webp' },
+      { label: 'Perfiles de oportunidad', src: './assets/nexo/pantallas/perfiles-de-oportunidad.webp' },
+      { label: 'Detalle de arquetipo', src: './assets/nexo/pantallas/detalle-de-arquetipo.webp' },
+      { label: 'Prospección', src: './assets/nexo/pantallas/prospeccion.webp' },
+      { label: 'Biblioteca · Banco de imágenes', src: './assets/nexo/pantallas/biblioteca-banco-de-imagenes.webp' }
+    ];
+    var kList = [
+      { label: 'Home · Genera tu curso', src: './assets/knoa/pantallas/home-genera-curso.webp' },
+      { label: 'Metodologías del curso', src: './assets/knoa/pantallas/metodologia-del-curso.webp' },
+      { label: 'Ruta con variantes', src: './assets/knoa/pantallas/ruta-con-variantes.webp' },
+      { label: 'Mis cursos', src: './assets/knoa/pantallas/mis-cursos.webp' },
+      { label: 'Comunidad', src: './assets/knoa/pantallas/comunidad.webp' },
+      { label: 'Onboarding · Cómo aprendes', src: './assets/knoa/pantallas/onboarding.webp' },
+      { label: 'Visualización de la lección', src: './assets/knoa/pantallas/visualizacion-leccion.webp' }
+    ];
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    var accent = this.props.accent ?? '#7C34B1';
+    var cycle = [
+      { label: 'Me pregunto', on: false },
+      { label: 'Investigo', on: true },
+      { label: 'Mapeo', on: true },
+      { label: 'Ideo', on: false },
+      { label: 'Diseño', on: true },
+      { label: 'Itero', on: false },
+      { label: 'Desarrollo', on: true }
+    ];
+    var steps = [];
+    for (var c = 0; c < 4; c++) {
+      for (var i = 0; i < cycle.length; i++) {
+        steps.push({
+          label: cycle[i].label,
+          num: '0' + (i + 1),
+          color: cycle[i].on ? accent : '#0B0B0F',
+          dot: cycle[i].on ? accent : 'rgba(11,11,15,.22)',
+          numColor: cycle[i].on ? accent : 'rgba(11,11,15,.34)',
+          arrow: cycle[i].on ? 'rgba(124,52,177,.55)' : 'rgba(11,11,15,.42)'
+        });
+      }
+    }
+    return {
+      accent: accent,
+      steps: steps,
+      cursorLabel: s.cursorLabel || '',
+      pageH: s.mode === '3d' ? H3D : HUX,
+      uxRing: s.mode === '3d' ? '0 solid transparent' : '4px solid #FFFFFF',
+      d3Ring: s.mode === '3d' ? '4px solid #FFFFFF' : '0 solid transparent',
+      isUx: s.mode !== '3d',
+      is3d: s.mode === '3d',
+      modeLabel: s.mode === '3d' ? '3D' : 'UX-UI',
+      modeAria: s.mode === '3d' ? 'Inicio · viendo proyectos 3D' : 'Inicio · viendo proyectos UX-UI',
+      setUx: function () { this.setMode('uxui'); }.bind(this),
+      goUx: function () { this.goMode('uxui'); }.bind(this),
+      go3d: function () { this.goMode('3d'); }.bind(this),
+      toggleMode: function () { this.goMode(s.mode === '3d' ? 'uxui' : '3d'); }.bind(this),
+      swapCursor: s.mode === '3d' ? 'Cambiar a UX-UI' : 'Cambiar a 3D',
+      swapAria: s.mode === '3d' ? 'Estás viendo proyectos 3D. Cambiar a proyectos UX-UI' : 'Estás viendo proyectos UX-UI. Cambiar a proyectos 3D',
+      uxPressed: s.mode === '3d' ? 'false' : 'true',
+      d3Pressed: s.mode === '3d' ? 'true' : 'false',
+      uxBg: s.mode === '3d' ? 'transparent' : accent,
+      uxFg: s.mode === '3d' ? '#5A5364' : '#FFFFFF',
+      d3Bg: s.mode === '3d' ? accent : 'transparent',
+      d3Fg: s.mode === '3d' ? '#FFFFFF' : '#5A5364',
+      toastO: s.toastOn ? '1' : '0',
+      toastY: s.toastOn ? '0px' : '14px',
+      toastText: s.toastText || '',
+      set3d: function () { this.setMode('3d'); }.bind(this),
+      cursorOn: s.cursorLabel ? '1' : '0',
+      dX: (478 - 360 * s.d) + 'px',
+      nX: (178 - 956 * s.n) + 'px',
+      kX: (478 - 360 * s.k) + 'px',
+      dShots: cover(dList, s.d, 'd', 360),
+      nShots: cover(nList, s.n, 'n', 956),
+      kShots: cover(kList, s.k, 'k', 360),
+      cycleDur: (((this.props.speed ?? 5) / 1.15).toFixed(2)) + 's',
+      dLabel: dList[s.d].label,
+      nLabel: nList[s.n].label,
+      kLabel: kList[s.k].label,
+      dNum: pad(s.d + 1),
+      nNum: pad(s.n + 1),
+      kNum: pad(s.k + 1),
+      dDots: this.dots('d', s.d, 11),
+      nDots: this.dots('n', s.n, 5),
+      kDots: this.dots('k', s.k, 7),
+      tools: tools.concat(tools).concat(tools).concat(tools),
+      refs: refs.concat(refs)
+    };
+  }
+}
+</script>
+</body>
+</html>

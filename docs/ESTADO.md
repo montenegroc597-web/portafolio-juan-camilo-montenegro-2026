@@ -12,7 +12,7 @@
 | Caso Dreaming | `casos/dreaming.html` | Paleta morada · 12 secciones · 3 personas · 3 meses |
 | Caso Knoa | `casos/knoa.html` | Paleta verde · 11 secciones · 3 personas · 2 meses |
 | Caso Nexo | `casos/nexo.html` | Paleta azul · 7 secciones · 4 personas · 4 días (hackathon) |
-| Assets | `assets/` | 81 imágenes `.webp`/`.png` + CV; por proyecto, con nombres descriptivos |
+| Assets | `assets/` | 84 imágenes `.webp`/`.png` + CV; por proyecto, con nombres descriptivos |
 | Skills | `skills/*.skill` | `portafolio-sistema-visual` y `portafolio-casos-de-estudio` |
 
 ## Lógica del home (`index.html`)
@@ -62,3 +62,4 @@ Estructura común (skill `portafolio-casos-de-estudio`): hero en degradado del c
 - 2026-09-21: repositorio creado y publicado en GitHub Pages.
 - 2026-09-21: Dreaming suma las dos pantallas del maker "Añadir impresora" (catálogo y configuración) en su carrusel, en la cinta final y en el home.
 - 2026-09-21: reorganización a estructura de repositorio (assets por proyecto con nombres descriptivos, `casos/`, `vendor/`, `docs/`, `fuentes/`, `herramientas/`). Los assets sin uso se movieron a `_archivo-previo/assets-sin-uso/` (diamante morado antiguo y un duplicado idéntico de "Crear producto").
+- 2026-09-21: cada caso muestra su mockup 3D (`assets/<proyecto>/mockup-<proyecto>.webp`) al final de Resumen. Dreaming: Pruebas rediseñada (tres filas: hallazgos con cifra grande + pantalla) e Iteraciones con antes → después unidos por una flecha.

@@ -1,4 +1,6 @@
-# Portafolio · Camilo Montenegro
+# Portafolio · Juan Camilo Montenegro 2026
+
+**Sitio en vivo:** https://montenegroc597-web.github.io/portafolio-juan-camilo-montenegro-2026/
 
 Portafolio de diseñador UX-UI y 3D. Sitio estático (HTML + assets), sin paso de build, listo para publicar en **GitHub Pages**.
 
@@ -50,7 +52,7 @@ python -m http.server 8080
 
 1. Crea el repositorio en GitHub y sube el proyecto (`git init`, `git add .`, `git commit`, `git push`).
 2. En el repositorio: **Settings → Pages → Build and deployment → Source: Deploy from a branch**, rama `main`, carpeta `/ (root)`.
-3. El sitio queda en `https://<usuario>.github.io/<repositorio>/`.
+3. El sitio queda en `https://<usuario>.github.io/<repositorio>/` (este: https://montenegroc597-web.github.io/portafolio-juan-camilo-montenegro-2026/).
 
 Todas las rutas son **relativas** (`assets/...`, `../assets/...`), así que funciona igual en la raíz de un dominio o en un subdirectorio de Pages. `.nojekyll` evita que Pages procese el sitio con Jekyll.
 

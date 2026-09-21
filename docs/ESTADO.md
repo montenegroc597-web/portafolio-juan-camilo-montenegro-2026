@@ -4,6 +4,8 @@
 
 ## Qué hay
 
+**Publicado:** https://montenegroc597-web.github.io/portafolio-juan-camilo-montenegro-2026/ (GitHub Pages, rama `main`, raíz). Repositorio: https://github.com/montenegroc597-web/portafolio-juan-camilo-montenegro-2026
+
 | Pieza | Archivo | Notas |
 |---|---|---|
 | Home | `index.html` | Dos modos (UX-UI y 3D), 7 proyectos, perfil, herramientas, referencias y contacto |
@@ -57,4 +59,5 @@ Estructura común (skill `portafolio-casos-de-estudio`): hero en degradado del c
 
 - 2026-09-20: los tres casos creados y conectados al home; CV, LinkedIn, correo, ArtStation (Scal, A New Hope, Gladiator), videos y tráiler de Kora integrados; Behance retirado.
 - 2026-09-21: carruseles del home en bucle infinito; selector UX-UI | 3D en la barra superior; alto automático en los casos.
+- 2026-09-21: repositorio creado y publicado en GitHub Pages.
 - 2026-09-21: reorganización a estructura de repositorio (assets por proyecto con nombres descriptivos, `casos/`, `vendor/`, `docs/`, `fuentes/`, `herramientas/`). Los assets sin uso se movieron a `_archivo-previo/assets-sin-uso/` (diamante morado antiguo y un duplicado idéntico de "Crear producto").

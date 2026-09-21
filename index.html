@@ -46,6 +46,20 @@ section { scroll-snap-align: start; scroll-margin-top: 104px; }
 h1, h2, h3, .sora { font-family: Sora, Inter, system-ui, sans-serif; }
 .navlink { transition: background 180ms ease, color 180ms ease; }
 .navlink:hover { background: #FFFFFF; color: #0B0B0F; }
+.lbthumb { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; overflow: hidden; cursor: none; font: inherit; }
+.lbthumb img { transition: transform 600ms cubic-bezier(.2,.7,.3,1), filter 300ms ease; }
+.lbthumb:hover img, .lbthumb:focus-visible img { transform: scale(1.035); filter: brightness(1.07); }
+.lbthumb:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+.lbicon { position: absolute; right: 18px; bottom: 18px; width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,.94); display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(8px) scale(.9); transition: opacity 240ms ease, transform 300ms cubic-bezier(.2,.7,.3,1); box-shadow: 0 8px 22px rgba(0,0,0,.28); }
+.lbthumb:hover .lbicon, .lbthumb:focus-visible .lbicon { opacity: 1; transform: none; }
+.lbfade { animation: lbfade 260ms ease both; }
+.lbpop { animation: lbpop 340ms cubic-bezier(.2,.7,.3,1) both; }
+.lbbtn { transition: background 180ms ease, transform 180ms ease, color 180ms ease; }
+.lbbtn:hover { transform: scale(1.08); }
+.lbbtn:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+@keyframes lbfade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lbpop { from { opacity: 0; transform: scale(.965); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .lbthumb img, .lbicon, .lbbtn { transition: none; } .lbfade, .lbpop { animation: none; } .lbthumb:hover img { transform: none; } }
 .pill { transition: transform 200ms cubic-bezier(.2,.7,.3,1), box-shadow 200ms ease, background 200ms ease, color 200ms ease; }
 .pill:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(11,11,15,.14); }
 .cvbtn { transition: transform 200ms cubic-bezier(.2,.7,.3,1), box-shadow 200ms ease; }
@@ -399,22 +413,22 @@ h1, h2, h3, .sora { font-family: Sora, Inter, system-ui, sans-serif; }
 <sc-if value="{{is3d}}" hint-placeholder-val="{{false}}">
 <section id="scal" style="width: 1440px; height: 1394px; box-sizing: border-box; background: #050A1E; padding: 0; display: flex; flex-direction: column; overflow: hidden;">
   <div style="height: 128px; flex-shrink: 0; background: #B7BEF2; border-radius: 0 0 44px 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 72px; box-sizing: border-box;"><h2 style="margin: 0; font-size: 58px; font-weight: 800; letter-spacing: -.02em; color: #101A6B;">Scal</h2><div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;"><span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #101A6B;">Modelado 3D · personaje y entorno</span><div style="display: flex; gap: 8px;"><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #101A6B; border: 1px solid rgba(16,26,107,.35); padding: 6px 14px; border-radius: 999px;">Competencia</span><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #101A6B; border: 1px solid rgba(16,26,107,.35); padding: 6px 14px; border-radius: 999px;">3 semanas</span></div></div></div>
-  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><img src="./assets/3d/scal/escena-principal.webp" alt="Escena principal de Scal con el personaje y el letrero" style="width: 100%; height: 729px; object-fit: cover; border-radius: 26px; display: block; margin-top: 0px;"><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 26px;"><img src="./assets/3d/scal/personaje-primer-plano.webp" alt="Primer plano del personaje de Scal" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/scal/diorama-casas-medievales.webp" alt="Diorama de casas medievales" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/scal/escena-nocturna-farol.webp" alt="Escena nocturna con farol" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">Scal nació en una competencia de modelado 3D de tres semanas. A partir de un concept base, el reto fue reinterpretarlo y trabajar bajo presión para cumplir con las estrictas métricas de un jurado. Es un trabajo 100% de mi autoría: cada detalle fue modelado por mí, sin assets externos.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="https://www.artstation.com/artwork/98Odwy" target="_blank" rel="noopener" data-cursor="Abrir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a></div></div></div></div>
+  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><button type="button" class="lbthumb" data-lb="scal" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Escena principal de Scal con el personaje y el letrero" style="border-radius: 26px; margin-top: 0px;"><img src="./assets/3d/scal/escena-principal.webp" alt="Escena principal de Scal con el personaje y el letrero" style="width: 100%; height: 729px; object-fit: cover; border-radius: 26px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 26px;"><button type="button" class="lbthumb" data-lb="scal" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Primer plano del personaje de Scal" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/scal/personaje-primer-plano.webp" alt="Primer plano del personaje de Scal" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><button type="button" class="lbthumb" data-lb="scal" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Diorama de casas medievales" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/scal/diorama-casas-medievales.webp" alt="Diorama de casas medievales" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><button type="button" class="lbthumb" data-lb="scal" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Escena nocturna con farol" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/scal/escena-nocturna-farol.webp" alt="Escena nocturna con farol" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">Scal nació en una competencia de modelado 3D de tres semanas. A partir de un concept base, el reto fue reinterpretarlo y trabajar bajo presión para cumplir con las estrictas métricas de un jurado. Es un trabajo 100% de mi autoría: cada detalle fue modelado por mí, sin assets externos.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="https://www.artstation.com/artwork/98Odwy" target="_blank" rel="noopener" data-cursor="Abrir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a></div></div></div></div>
 </section>
 
 <section id="kora" style="width: 1440px; height: 1792px; box-sizing: border-box; background: #223E18; padding: 0; display: flex; flex-direction: column; overflow: hidden;">
   <div style="height: 128px; flex-shrink: 0; background: #C3DBAC; border-radius: 0 0 44px 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 72px; box-sizing: border-box;"><h2 style="margin: 0; font-size: 58px; font-weight: 800; letter-spacing: -.02em; color: #21400F;">Kora</h2><div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;"><span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #21400F;">Personajes y props · videojuego</span><div style="display: flex; gap: 8px;"><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #21400F; border: 1px solid rgba(33,64,15,.35); padding: 6px 14px; border-radius: 999px;">Videojuego</span><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #21400F; border: 1px solid rgba(33,64,15,.35); padding: 6px 14px; border-radius: 999px;">Pipeline completo</span></div></div></div>
-  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><img src="./assets/3d/kora/menu-del-juego.webp" alt="Menú principal del videojuego Köra" style="width: 1302px; height: 405px; object-fit: cover; border-radius: 22px; display: block; object-position: 50% 17.7108%"><p style="margin: 12px 0 0 0; font-size: 15px; line-height: 2.25; color: rgba(255,255,255,.52); text-align: left; margin-top: 0px; margin-bottom: 6px">Menú del juego · arte hecho por DanielArt (concept artist de Kora).</p><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 0px;"><img src="./assets/3d/kora/personaje-kora-pose-a.webp" alt="Kora, personaje principal, en pose A" style="width: 100%; height: 497px; object-fit: cover; border-radius: 20px; display: block; object-position: 53.4031% 50%"><img src="./assets/3d/kora/enemigo-acorazado-rojo.webp" alt="Enemigo acorazado en rojo" style="width: 100%; height: 497px; object-fit: cover; border-radius: 20px; display: block; object-position: 50.4626% 50%"><img src="./assets/3d/kora/enemigo-acorazado-maza.webp" alt="Enemigo acorazado con maza" style="width: 100%; height: 497px; object-fit: cover; border-radius: 20px; display: block; object-position: 51.4009% 50%"></div><img src="./assets/3d/kora/props-y-vegetacion.webp" alt="Props y vegetación del universo de Kora" style="width: 100%; height: 334px; object-fit: cover; border-radius: 26px; display: block; margin-top: 26px;"><div style="display: flex; justify-content: center; margin-top: 26px;"></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">Kora ha sido mi proyecto más ambicioso en el desarrollo de personajes y props 3D. Fue un reto integral en el que tuve que dominar la optimización topológica para garantizar un rendimiento perfecto en motores de videojuegos. Lideré todo el pipeline de producción: desde la retopología, rigging y texturizado de los assets, hasta la creación del concepto original del videojuego, diseñando un universo visual inspirado profundamente en el folclor amazónico.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="#kora" data-cursor="Estamos trabajando en ello" aria-disabled="true" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a><a class="pill" href="https://www.youtube.com/watch?v=kMXU-7kmOMk" target="_blank" rel="noopener" data-cursor="Reproducir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Ver Trailer<svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5.4 3.2 16 10 5.4 16.8V3.2Z" stroke="#0B0B0F" stroke-width="1.9" stroke-linejoin="round"></path></svg></a></div></div></div></div>
+  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><button type="button" class="lbthumb" data-lb="kora" data-lb-note="Arte hecho por DanielArt (concept artist de Kora)" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Menú principal del videojuego Köra" style="border-radius: 22px; margin-top: 0px;"><img src="./assets/3d/kora/menu-del-juego.webp" alt="Menú principal del videojuego Köra" style="width: 100%; height: 405px; object-fit: cover; border-radius: 22px; display: block; object-position: 50% 17.7108%"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><p style="margin: 12px 0 0 0; font-size: 15px; line-height: 2.25; color: rgba(255,255,255,.52); text-align: left; margin-top: 0px; margin-bottom: 6px">Menú del juego · arte hecho por DanielArt (concept artist de Kora).</p><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 0px;"><button type="button" class="lbthumb" data-lb="kora" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Kora, personaje principal, en pose A" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/kora/personaje-kora-pose-a.webp" alt="Kora, personaje principal, en pose A" style="width: 100%; height: 497px; object-fit: cover; border-radius: 20px; display: block; object-position: 53.4031% 50%"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><button type="button" class="lbthumb" data-lb="kora" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Enemigo acorazado en rojo" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/kora/enemigo-acorazado-rojo.webp" alt="Enemigo acorazado en rojo" style="width: 100%; height: 497px; object-fit: cover; border-radius: 20px; display: block; object-position: 50.4626% 50%"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><button type="button" class="lbthumb" data-lb="kora" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Enemigo acorazado con maza" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/kora/enemigo-acorazado-maza.webp" alt="Enemigo acorazado con maza" style="width: 100%; height: 497px; object-fit: cover; border-radius: 20px; display: block; object-position: 51.4009% 50%"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button></div><button type="button" class="lbthumb" data-lb="kora" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Props y vegetación del universo de Kora" style="border-radius: 26px; margin-top: 26px;"><img src="./assets/3d/kora/props-y-vegetacion.webp" alt="Props y vegetación del universo de Kora" style="width: 100%; height: 334px; object-fit: cover; border-radius: 26px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><div style="display: flex; justify-content: center; margin-top: 26px;"></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">Kora ha sido mi proyecto más ambicioso en el desarrollo de personajes y props 3D. Fue un reto integral en el que tuve que dominar la optimización topológica para garantizar un rendimiento perfecto en motores de videojuegos. Lideré todo el pipeline de producción: desde la retopología, rigging y texturizado de los assets, hasta la creación del concepto original del videojuego, diseñando un universo visual inspirado profundamente en el folclor amazónico.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="#kora" data-cursor="Estamos trabajando en ello" aria-disabled="true" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a><a class="pill" href="https://www.youtube.com/watch?v=kMXU-7kmOMk" target="_blank" rel="noopener" data-cursor="Reproducir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Ver Trailer<svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5.4 3.2 16 10 5.4 16.8V3.2Z" stroke="#0B0B0F" stroke-width="1.9" stroke-linejoin="round"></path></svg></a></div></div></div></div>
 </section>
 
 <section id="a-new-hope" style="width: 1440px; height: 1457px; box-sizing: border-box; background: #08080A; padding: 0; display: flex; flex-direction: column; overflow: hidden;">
   <div style="height: 128px; flex-shrink: 0; background: #D3D3D9; border-radius: 0 0 44px 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 72px; box-sizing: border-box;"><h2 style="margin: 0; font-size: 58px; font-weight: 800; letter-spacing: -.02em; color: #1A1A1F;">A New Hope</h2><div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;"><span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #1A1A1F;">Personaje game-ready · hand-painted</span><div style="display: flex; gap: 8px;"><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #1A1A1F; border: 1px solid rgba(26,26,31,.35); padding: 6px 14px; border-radius: 999px;">Proyecto académico</span><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #1A1A1F; border: 1px solid rgba(26,26,31,.35); padding: 6px 14px; border-radius: 999px;">Rigging propio</span></div></div></div>
-  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><img src="./assets/3d/a-new-hope/personaje-con-sable.webp" alt="Personaje de A New Hope con sable de luz" style="width: 100%; height: 729px; object-fit: cover; border-radius: 26px; display: block; margin-top: 0px;"><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 26px;"><img src="./assets/3d/a-new-hope/casco-luz-roja-y-azul.webp" alt="Primer plano del casco bajo luz roja y azul" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/a-new-hope/contraluz-rojo-espalda.webp" alt="Contraluz rojo del personaje de espaldas" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/a-new-hope/personaje-completo-sable-encendido.webp" alt="Personaje completo con el sable encendido" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">A New Hope nació como un proyecto académico de temática libre. Aproveché este espacio como un reto personal para desarrollar un personaje game-ready, completamente funcional para videojuegos, abarcando todo el proceso técnico, incluyendo el rigging. Para lograr una dirección de arte similar a la de la serie Arcane, tanto las texturas como los mapas de normales fueron pintados meticulosamente a mano.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="https://www.artstation.com/artwork/QX1gBx" target="_blank" rel="noopener" data-cursor="Abrir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a></div></div></div></div>
+  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><button type="button" class="lbthumb" data-lb="a-new-hope" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Personaje de A New Hope con sable de luz" style="border-radius: 26px; margin-top: 0px;"><img src="./assets/3d/a-new-hope/personaje-con-sable.webp" alt="Personaje de A New Hope con sable de luz" style="width: 100%; height: 729px; object-fit: cover; border-radius: 26px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 26px;"><button type="button" class="lbthumb" data-lb="a-new-hope" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Primer plano del casco bajo luz roja y azul" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/a-new-hope/casco-luz-roja-y-azul.webp" alt="Primer plano del casco bajo luz roja y azul" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><button type="button" class="lbthumb" data-lb="a-new-hope" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Contraluz rojo del personaje de espaldas" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/a-new-hope/contraluz-rojo-espalda.webp" alt="Contraluz rojo del personaje de espaldas" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><button type="button" class="lbthumb" data-lb="a-new-hope" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Personaje completo con el sable encendido" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/a-new-hope/personaje-completo-sable-encendido.webp" alt="Personaje completo con el sable encendido" style="width: 100%; height: 233px; object-fit: cover; border-radius: 20px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">A New Hope nació como un proyecto académico de temática libre. Aproveché este espacio como un reto personal para desarrollar un personaje game-ready, completamente funcional para videojuegos, abarcando todo el proceso técnico, incluyendo el rigging. Para lograr una dirección de arte similar a la de la serie Arcane, tanto las texturas como los mapas de normales fueron pintados meticulosamente a mano.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="https://www.artstation.com/artwork/QX1gBx" target="_blank" rel="noopener" data-cursor="Abrir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a></div></div></div></div>
 </section>
 
 <section id="gladiator" style="width: 1440px; height: 820px; box-sizing: border-box; background: linear-gradient(180deg, #3D0912 0%, #6E0F1C 100%); padding: 0; display: flex; flex-direction: column; overflow: hidden;">
   <div style="height: 128px; flex-shrink: 0; background: #F0B2AD; border-radius: 0 0 44px 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 72px; box-sizing: border-box;"><h2 style="margin: 0; font-size: 58px; font-weight: 800; letter-spacing: -.02em; color: #5C0E13;">Gladiator</h2><div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;"><span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #5C0E13;">Escultura digital · impresión 3D</span><div style="display: flex; gap: 8px;"><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #5C0E13; border: 1px solid rgba(92,14,19,.35); padding: 6px 14px; border-radius: 999px;">Sculpting</span><span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #5C0E13; border: 1px solid rgba(92,14,19,.35); padding: 6px 14px; border-radius: 999px;">Estilizado</span></div></div></div>
-  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 0px;"><img src="./assets/3d/gladiator/gladiador-escudo-frontal.webp" alt="Gladiador con escudo, vista frontal" style="width: 100%; height: 414px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/gladiator/gladiador-base-circular.webp" alt="Gladiador sobre base circular" style="width: 100%; height: 414px; object-fit: cover; border-radius: 20px; display: block;"><img src="./assets/3d/gladiator/gladiador-tridente.webp" alt="Gladiador con tridente" style="width: 100%; height: 414px; object-fit: cover; border-radius: 20px; display: block;"></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">Concebido como una práctica de esculpido digital puro, el objetivo fue crear un personaje de estética estilizada optimizado para impresión 3D. El modelo se desarrolló íntegramente mediante sculpting, y se complementó la presentación visual experimentando con un sistema de nodos para el fondo.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="https://www.artstation.com/artwork/xYw5V4" target="_blank" rel="noopener" data-cursor="Abrir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a></div></div></div></div>
+  <div class="reveal-soft" style="padding: 40px 72px 72px 72px; box-sizing: border-box;"><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 0px;"><button type="button" class="lbthumb" data-lb="gladiator" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Gladiador con escudo, vista frontal" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/gladiator/gladiador-escudo-frontal.webp" alt="Gladiador con escudo, vista frontal" style="width: 100%; height: 414px; object-fit: cover; border-radius: 20px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><button type="button" class="lbthumb" data-lb="gladiator" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Gladiador sobre base circular" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/gladiator/gladiador-base-circular.webp" alt="Gladiador sobre base circular" style="width: 100%; height: 414px; object-fit: cover; border-radius: 20px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button><button type="button" class="lbthumb" data-lb="gladiator" data-cursor="Ver en grande" aria-label="Ver en pantalla completa: Gladiador con tridente" style="border-radius: 20px; margin-top: 0px;"><img src="./assets/3d/gladiator/gladiador-tridente.webp" alt="Gladiador con tridente" style="width: 100%; height: 414px; object-fit: cover; border-radius: 20px; display: block;"><span class="lbicon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 3h5v5M8 17H3v-5M17 3l-5.5 5.5M3 17l5.5-5.5" stroke="#0B0B0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button></div><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; margin-top: 40px;"><p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.66; color: rgba(255,255,255,.86);">Concebido como una práctica de esculpido digital puro, el objetivo fue crear un personaje de estética estilizada optimizado para impresión 3D. El modelo se desarrolló íntegramente mediante sculpting, y se complementó la presentación visual experimentando con un sistema de nodos para el fondo.</p><div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;"><div style="display: flex; gap: 16px;"><a class="pill" href="https://www.artstation.com/artwork/xYw5V4" target="_blank" rel="noopener" data-cursor="Abrir" style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #0B0B0F; font-family: Sora, sans-serif; font-size: 18px; font-weight: 600; text-decoration: none; padding: 16px 34px; border-radius: 999px;">Artstation<img src="./assets/shared/iconos/artstation.png" alt="" aria-hidden="true" style="width: 21px; height: auto; display: block;"></a></div></div></div></div>
 </section>
 </sc-if>
 
@@ -506,6 +520,35 @@ h1, h2, h3, .sora { font-family: Sora, Inter, system-ui, sans-serif; }
 <!-- cursor seguidor -->
 <div role="status" aria-live="polite" style="position: fixed; left: 50%; bottom: 36px; transform: translateX(-50%) translateY({{toastY}}); opacity: {{toastO}}; transition: opacity 260ms ease, transform 320ms cubic-bezier(.2,.7,.3,1); z-index: 95; pointer-events: none; background: #0B0B0F; color: #FFFFFF; font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; padding: 14px 26px; border-radius: 999px; display: flex; align-items: center; gap: 12px; white-space: nowrap; box-shadow: 0 16px 40px rgba(11,11,15,.28);"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: {{accent}}; flex-shrink: 0;"></span>{{toastText}}</div>
 
+<!-- visor de imagenes 3D a pantalla completa -->
+<sc-if value="{{lbOn}}" hint-placeholder-val="{{false}}">
+<div data-lightbox="1" role="dialog" aria-modal="true" aria-label="{{lbAria}}" tabindex="-1" onClick="{{lbBackdrop}}" onKeyDown="{{lbKey}}" class="lbfade" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 85; background: {{lbBg}}; backdrop-filter: blur(10px); display: flex; flex-direction: column; box-sizing: border-box; padding: 26px 40px 30px 40px; outline: none;">
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-shrink: 0;">
+    <div data-lb-keep="1" style="display: flex; align-items: center; gap: 14px; min-width: 0;">
+      <span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: {{lbAccent}}; color: {{lbInk}}; padding: 9px 20px; border-radius: 999px;">{{lbTitle}}</span>
+      <span style="font-family: Sora, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: .12em; color: rgba(255,255,255,.72);">{{lbCount}}</span>
+    </div>
+    <button type="button" data-lb-keep="1" data-lb-first="1" class="lbbtn" onClick="{{lbClose}}" data-cursor="Cerrar" aria-label="Cerrar la vista completa" style="display: inline-flex; align-items: center; gap: 12px; height: 52px; padding: 0 22px 0 26px; border-radius: 999px; border: 1.6px solid rgba(255,255,255,.55); background: rgba(255,255,255,.08); color: #FFFFFF; font-family: Sora, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; cursor: none;">Cerrar <span style="font-weight: 600; opacity: .6; letter-spacing: .08em;">Esc</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path></svg></button>
+  </div>
+  <div style="flex: 1 1 0; min-height: 0; display: flex; align-items: center; justify-content: center; gap: 28px; padding: 22px 0;">
+    <sc-if value="{{lbMany}}" hint-placeholder-val="{{true}}">
+    <button type="button" data-lb-keep="1" class="lbbtn" onClick="{{lbPrev}}" data-cursor="Anterior" aria-label="Imagen anterior" style="flex-shrink: 0; width: 64px; height: 64px; border-radius: 999px; border: 0; background: rgba(255,255,255,.94); color: #0B0B0F; display: flex; align-items: center; justify-content: center; cursor: none; box-shadow: 0 10px 28px rgba(0,0,0,.35);"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M16 4 7 13l9 9" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+    </sc-if>
+    <div style="flex: 1 1 0; min-width: 0; height: 100%; display: flex; align-items: center; justify-content: center;">
+      <img data-lb-keep="1" class="lbpop" src="{{lbSrc}}" alt="{{lbAlt}}" style="display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 20px; box-shadow: 0 30px 80px rgba(0,0,0,.5);">
+    </div>
+    <sc-if value="{{lbMany}}" hint-placeholder-val="{{true}}">
+    <button type="button" data-lb-keep="1" class="lbbtn" onClick="{{lbNext}}" data-cursor="Siguiente" aria-label="Imagen siguiente" style="flex-shrink: 0; width: 64px; height: 64px; border-radius: 999px; border: 0; background: rgba(255,255,255,.94); color: #0B0B0F; display: flex; align-items: center; justify-content: center; cursor: none; box-shadow: 0 10px 28px rgba(0,0,0,.35);"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M10 4l9 9-9 9" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+    </sc-if>
+  </div>
+  <div style="flex-shrink: 0; text-align: center; min-height: 46px; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.78);"><div data-lb-keep="1" style="width: fit-content; max-width: 100%; margin: 0 auto;">
+    <span>{{lbAlt}}</span>
+    <sc-if value="{{lbNote}}" hint-placeholder-val="{{false}}"><span style="display: block; font-size: 14px; color: rgba(255,255,255,.55);">{{lbNote}}</span></sc-if>
+    <span style="display: block; margin-top: 8px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.42);">Haz clic fuera de la imagen o pulsa Esc para cerrar</span>
+  </div></div>
+</div>
+</sc-if>
+
 <div data-cursor-follower="1" class="cursor-dot" style="position: absolute; left: 0px; top: -19px; z-index: 90; pointer-events: none; opacity: {{cursorOn}}; transform: translate3d(-200px, -200px, 0)">
   <div style="position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-radius: 999px; background: {{accent}};"></div>
   <div style="position: absolute; left: 18px; top: 10px; display: flex; align-items: center; gap: 9px; background: {{accent}}; padding: 10px 18px; border-radius: 999px; white-space: nowrap; box-shadow: 0 10px 26px rgba(11,11,15,.24);">
@@ -521,7 +564,7 @@ h1, h2, h3, .sora { font-family: Sora, Inter, system-ui, sans-serif; }
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { d: 0, n: 0, k: 0, cursorLabel: '', mode: 'uxui', toastOn: false, toastText: '' };
+    this.state = { d: 0, n: 0, k: 0, cursorLabel: '', mode: 'uxui', toastOn: false, toastText: '', lb: null };
     this.lastY = 0;
   }
 
@@ -614,6 +657,12 @@ class Component extends DCLogic {
       this.lastY = y;
     }.bind(this);
 
+    this.onRootClick = function (e) {
+      var th = e.target && e.target.closest ? e.target.closest('[data-lb]') : null;
+      if (th) this.openLb(th);
+    }.bind(this);
+
+    root.addEventListener('click', this.onRootClick);
     root.addEventListener('mousemove', this.onMove);
     root.addEventListener('mouseover', this.onOver);
     root.addEventListener('mouseleave', this.onOut);
@@ -630,7 +679,9 @@ class Component extends DCLogic {
   componentWillUnmount() {
     if (this.timer) clearInterval(this.timer);
     if (this.toastTimer) clearTimeout(this.toastTimer);
+    this.unlockScroll();
     if (this.root) {
+      this.root.removeEventListener('click', this.onRootClick);
       this.root.removeEventListener('mousemove', this.onMove);
       this.root.removeEventListener('mouseover', this.onOver);
       this.root.removeEventListener('mouseleave', this.onOut);
@@ -639,6 +690,68 @@ class Component extends DCLogic {
     if (this.ro) this.ro.disconnect();
     window.removeEventListener('scroll', this.onScroll, true);
     window.removeEventListener('wheel', this.onScroll);
+  }
+
+  lockScroll() {
+    try { document.documentElement.style.overflow = 'hidden'; } catch (e) {}
+  }
+
+  unlockScroll() {
+    try { document.documentElement.style.overflow = ''; } catch (e) {}
+  }
+
+  openLb(th) {
+    var g = th.getAttribute('data-lb');
+    var nodes = this.root.querySelectorAll('[data-lb="' + g + '"]');
+    var list = [];
+    var idx = 0;
+    for (var i = 0; i < nodes.length; i++) {
+      var im = nodes[i].querySelector('img');
+      if (!im) continue;
+      if (nodes[i] === th) idx = list.length;
+      list.push({ src: im.getAttribute('src'), alt: im.getAttribute('alt') || '', note: nodes[i].getAttribute('data-lb-note') || '' });
+    }
+    if (!list.length) return;
+    this.lbList = list;
+    this.lbTrigger = th;
+    this.lockScroll();
+    this.setState({ lb: { g: g, i: idx } });
+    setTimeout(function () {
+      var dlg = document.querySelector('[data-lightbox]');
+      if (!dlg) return;
+      // dentro del canvas (o cualquier ancestro transformado) el fixed no cubre la ventana: lo ubicamos sobre la parte visible
+      var moved = false;
+      for (var an = dlg.parentElement; an && an !== document.documentElement; an = an.parentElement) {
+        var cs = window.getComputedStyle(an);
+        if ((cs.transform && cs.transform !== 'none') || (cs.filter && cs.filter !== 'none') || (cs.perspective && cs.perspective !== 'none') || /transform|filter/.test(cs.willChange || '') || /paint|layout/.test(cs.contain || '')) { moved = true; break; }
+      }
+      if (moved) {
+        var pr = this.root.getBoundingClientRect();
+        var sc = (pr.width / 1440) || 1;
+        dlg.style.position = 'absolute';
+        dlg.style.left = '0px';
+        dlg.style.top = Math.max(0, -pr.top / sc) + 'px';
+        dlg.style.width = '100%';
+        dlg.style.height = (window.innerHeight / sc) + 'px';
+      }
+      var first = dlg.querySelector('[data-lb-first]');
+      if (first && first.focus) first.focus();
+    }.bind(this), 30);
+  }
+
+  closeLb() {
+    if (!this.state.lb) return;
+    this.unlockScroll();
+    this.setState({ lb: null });
+    var t = this.lbTrigger;
+    if (t && t.focus) setTimeout(function () { try { t.focus({ preventScroll: true }); } catch (e) {} }, 30);
+  }
+
+  stepLb(d) {
+    var lb = this.state.lb;
+    if (!lb || !this.lbList) return;
+    var n = this.lbList.length;
+    this.setState({ lb: { g: lb.g, i: ((lb.i + d) % n + n) % n } });
   }
 
   goMode(m) {
@@ -682,6 +795,15 @@ class Component extends DCLogic {
   renderVals() {
     var HUX = 7380, H3D = 9063;
     var s = this.state;
+    var LBM = {
+      'scal': { name: 'Scal', bg: 'rgba(5,10,30,.95)', accent: '#B7BEF2', ink: '#101A6B' },
+      'kora': { name: 'Kora', bg: 'rgba(14,28,8,.95)', accent: '#C3DBAC', ink: '#21400F' },
+      'a-new-hope': { name: 'A New Hope', bg: 'rgba(8,8,10,.96)', accent: '#D3D3D9', ink: '#1A1A1F' },
+      'gladiator': { name: 'Gladiator', bg: 'rgba(42,6,12,.95)', accent: '#F0B2AD', ink: '#5C0E13' }
+    };
+    var lbm = s.lb ? (LBM[s.lb.g] || LBM.scal) : LBM.scal;
+    var lbItem = (s.lb && this.lbList && this.lbList[s.lb.i]) || { src: '', alt: '', note: '' };
+    var lbN = this.lbList ? this.lbList.length : 0;
     var self = this;
     function cover(list, active, key, step) {
       var n = list.length;
@@ -788,6 +910,39 @@ class Component extends DCLogic {
       accent: accent,
       steps: steps,
       cursorLabel: s.cursorLabel || '',
+      lbOn: !!s.lb,
+      lbMany: lbN > 1,
+      lbSrc: lbItem.src,
+      lbAlt: lbItem.alt,
+      lbNote: lbItem.note,
+      lbTitle: lbm.name,
+      lbBg: lbm.bg,
+      lbAccent: lbm.accent,
+      lbInk: lbm.ink,
+      lbCount: s.lb ? (s.lb.i + 1) + ' / ' + lbN : '',
+      lbAria: 'Vista completa de ' + lbm.name + ': ' + lbItem.alt,
+      lbClose: function () { this.closeLb(); }.bind(this),
+      lbPrev: function (e) { if (e && e.stopPropagation) e.stopPropagation(); this.stepLb(-1); }.bind(this),
+      lbNext: function (e) { if (e && e.stopPropagation) e.stopPropagation(); this.stepLb(1); }.bind(this),
+      lbBackdrop: function (e) {
+        var t = e && e.target;
+        if (t && t.closest && t.closest('[data-lb-keep]')) return;
+        this.closeLb();
+      }.bind(this),
+      lbKey: function (e) {
+        var k = e.key;
+        if (k === 'Escape') { e.preventDefault(); this.closeLb(); }
+        else if (k === 'ArrowRight') { e.preventDefault(); this.stepLb(1); }
+        else if (k === 'ArrowLeft') { e.preventDefault(); this.stepLb(-1); }
+        else if (k === 'Tab') {
+          var dlg = document.querySelector('[data-lightbox]');
+          var f = dlg ? dlg.querySelectorAll('button') : [];
+          if (!f.length) return;
+          var first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }.bind(this),
       pageH: s.mode === '3d' ? H3D : HUX,
       uxRing: s.mode === '3d' ? '0 solid transparent' : '4px solid #FFFFFF',
       d3Ring: s.mode === '3d' ? '4px solid #FFFFFF' : '0 solid transparent',

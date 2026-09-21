@@ -19,6 +19,7 @@
 
 - **Modo UX-UI / 3D.** `state.mode`. Cambia con: las dos tarjetas de Proyectos, el botón circular del celular/cubo en la barra superior y el selector UX-UI | 3D. Al cambiar desde la barra, baja suavemente a los proyectos de esa sección y muestra un aviso ("Mostrando proyectos 3D"). `pageH` = 7380 (UX-UI) / 9063 (3D).
 - **Carruseles (Dreaming 13 pantallas, Nexo 5, Knoa 7).** Bucle infinito: cada pantalla se posiciona por su distancia circular al centro (`cover()`), así que siempre hay vecina a ambos lados. Autoplay con `speed` (5 s por defecto).
+- **Visor de imágenes 3D.** Las 16 imágenes de Scal, Kora, A New Hope y Gladiator son botones (`.lbthumb`, `data-lb="<proyecto>"`). Al hacer clic se abre un visor a pantalla completa con la paleta del proyecto: flechas (y ← →) recorren solo las imágenes de ese proyecto en bucle; se cierra con el botón Cerrar, Esc o un clic fuera de la imagen. Bloquea el scroll de fondo y devuelve el foco a la miniatura. Sin listener global de teclado: `onKeyDown` vive en el propio diálogo. Si un ancestro tiene transform (canvas), el diálogo pasa a `absolute` sobre la zona visible.
 - **Barra superior.** Se esconde al bajar y reaparece al subir. Si `sticky` falla (dentro del canvas), pasa a `fixed` y un espaciador (`data-bar-spacer`) evita el hueco de 104 px al final.
 - **Cursor contextual.** Cualquier elemento con `data-cursor="…"` muestra un seguidor con esa etiqueta. Los botones sin enlace todavía usan «Estamos trabajando en ello».
 - **Escala.** Raíz fija de 1440 px; `fit()` aplica `zoom = min(1, ancho/1440)`.
@@ -63,3 +64,4 @@ Estructura común (skill `portafolio-casos-de-estudio`): hero en degradado del c
 - 2026-09-21: Dreaming suma las dos pantallas del maker "Añadir impresora" (catálogo y configuración) en su carrusel, en la cinta final y en el home.
 - 2026-09-21: reorganización a estructura de repositorio (assets por proyecto con nombres descriptivos, `casos/`, `vendor/`, `docs/`, `fuentes/`, `herramientas/`). Los assets sin uso se movieron a `_archivo-previo/assets-sin-uso/` (diamante morado antiguo y un duplicado idéntico de "Crear producto").
 - 2026-09-21: cada caso muestra su mockup 3D (`assets/<proyecto>/mockup-<proyecto>.webp`) al final de Resumen. Dreaming: Pruebas rediseñada (tres filas: hallazgos con cifra grande + pantalla) e Iteraciones con antes → después unidos por una flecha.
+- 2026-09-21: visor a pantalla completa para las imágenes de la sección 3D (navegación por proyecto, cierre con botón/Esc/clic fuera).

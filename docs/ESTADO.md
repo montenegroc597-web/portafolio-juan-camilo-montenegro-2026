@@ -26,17 +26,18 @@
 
 ## Responsive (móvil)
 
-`@media (max-width: 860px)` en las 4 páginas, sin tocar nada del layout de escritorio (que sigue igual arriba de ese ancho). Estrategia: no se reescribió el markup, se sobrescriben con `!important` los estilos inline fijos del diseño de escritorio, usando selectores de atributo (`[style*="..."]`) sobre fragmentos únicos de cada patrón repetido, más un puñado de clases nuevas para los casos que ese truco no alcanza a cubrir (`.hero-collage`, `.avatarwrap`/`.avatar3d`, `.carousel-box`, `.caso-body`, `.sitenav`).
+`@media (max-width: 860px)` en las 4 páginas, sin tocar nada del layout de escritorio (que sigue igual arriba de ese ancho). Estrategia: no se reescribió el markup, se sobrescriben con `!important` los estilos inline fijos del diseño de escritorio, usando selectores de atributo (`[style*="..."]`) sobre fragmentos únicos de cada patrón repetido, más un puñado de clases nuevas para los casos que ese truco no alcanza a cubrir (`.hero-collage`, `.hero-shots`, `.avatarwrap`/`.avatar3d`, `.carousel-box`, `.caso-body`, `.sitenav`).
 
 - **Zoom apagado, `overflow: hidden` en la raíz.** Root a `width: 100%`; todo con `width: 1440px` a `100%`; secciones a `height: auto`.
 - **Grids a una columna** (`grid-template-columns: repeat(...)` → `1fr`) y **filas flex apiladas** (`flex-direction: column`), siempre con `align-items: stretch` — sin esto, un `align-items: flex-start`/`center` original hace que los hijos se encojan a su contenido en vez de ocupar el 100%, y basta un elemento sin restricción (una imagen que tarda en cargar, por ejemplo) para que todo el bloque se dispare de ancho. Fue la causa real de una sección que aparecía en blanco durante las pruebas.
 - **Cuidado con los shorthands normalizados por el navegador:** un selector `[style*="padding: 0 72px 72px 72px"]` nunca hace match porque el navegador serializa `0` como `0px` y además colapsa valores repetidos (`0 72px 72px 72px` → `0px 72px 72px`). Cuando el fragmento incluye un cero bare o valores que se puedan colapsar, mejor una clase real que un selector de atributo.
-- **Fotos y mockups compuestos** (hero del home, hero de cada caso, avatar de Quien soy): se simplifican a la imagen sola a ancho completo, sin los rectángulos decorativos ni etiquetas superpuestas que solo tenían sentido con el posicionamiento absoluto de escritorio.
+- **Fotos y mockups compuestos:** la foto del hero y el avatar de Quien soy se mantienen sobre su bloque de color (reposicionado a la medida del celular); el hero de cada caso (`.hero-shots`) muestra las tres capturas en abanico, y en Nexo, por ser horizontales, la principal arriba y las otras dos debajo.
 - **Carruseles coverflow** (`.coverslide`): en vez de reescribir la lógica, cada slide pasa a `position: absolute; inset: 0; width: 100%` — como solo el slide activo tiene `opacity: 1`, los demás quedan completamente tapados detrás sin necesidad de tocar el JS.
-- **Barra superior:** pasa a dos filas; la navegación se vuelve una tira horizontal con scroll (`overflow-x: auto`).
+- **Barra superior:** dos filas; los cuatro enlaces del menú caben completos en la segunda.
 - **Barra lateral de los casos** (`aside`): deja de ser sticky, y su `<nav>` de secciones pasa de lista vertical a pills envueltas (`flex-wrap: wrap`).
 - **Imágenes de pantallas/capturas:** `height: auto` en vez del alto fijo de escritorio, para que se vean completas y a buen tamaño sin recorte forzado.
 - **Visor a pantalla completa:** relleno y botones más chicos, imagen limitada con `vw`/`vh` en vez de porcentajes (evita depender del ancho real del contenedor).
+- **Revisar siempre a tamaño real** (pantallas de 390x844, no una captura larga reducida): así se vio que los casos seguían escalados con zoom.
 - Herramientas de prueba: Chrome headless por línea de comandos tiene un piso de ~500px de ancho aunque se pida menos con `--window-size`; para un viewport móvil real (390px) hubo que instalar `puppeteer-core` en el scratchpad y pilotar el mismo Chrome instalado vía CDP (`page.setViewport`), con `--allow-file-access-from-files` en los args del launch (si falta, las páginas cargadas por `file://` fallan por CORS).
 
 ## Lógica de los casos

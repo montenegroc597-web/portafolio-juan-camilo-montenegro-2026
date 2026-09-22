@@ -1,6 +1,6 @@
 # Estado del portafolio
 
-Última actualización: 2026-09-21. Para estructura, convenciones y cómo publicar, ver el [README](../README.md).
+Última actualización: 2026-09-22. Para estructura, convenciones y cómo publicar, ver el [README](../README.md).
 
 ## Qué hay
 
@@ -22,7 +22,22 @@
 - **Visor de imágenes 3D.** Las 16 imágenes de Scal, Kora, A New Hope y Gladiator son botones (`.lbthumb`, `data-lb="<proyecto>"`). Al hacer clic se abre un visor a pantalla completa con la paleta del proyecto: flechas (y ← →) recorren solo las imágenes de ese proyecto en bucle; se cierra con el botón Cerrar, Esc o un clic fuera de la imagen. Bloquea el scroll de fondo y devuelve el foco a la miniatura. Sin listener global de teclado: `onKeyDown` vive en el propio diálogo. Si un ancestro tiene transform (canvas), el diálogo pasa a `absolute` sobre la zona visible.
 - **Barra superior.** Se esconde al bajar y reaparece al subir. Si `sticky` falla (dentro del canvas), pasa a `fixed` y un espaciador (`data-bar-spacer`) evita el hueco de 104 px al final.
 - **Cursor contextual.** Cualquier elemento con `data-cursor="…"` muestra un seguidor con esa etiqueta. Los botones sin enlace todavía usan «Estamos trabajando en ello».
-- **Escala.** Raíz fija de 1440 px; `fit()` aplica `zoom = min(1, ancho/1440)`.
+- **Escala.** Raíz fija de 1440 px; `fit()` aplica `zoom = min(1, ancho/1440)` por encima de 860 px. Por debajo, el CSS móvil desactiva el `zoom` y reordena el contenido (ver más abajo).
+
+## Responsive (móvil)
+
+`@media (max-width: 860px)` en las 4 páginas, sin tocar nada del layout de escritorio (que sigue igual arriba de ese ancho). Estrategia: no se reescribió el markup, se sobrescriben con `!important` los estilos inline fijos del diseño de escritorio, usando selectores de atributo (`[style*="..."]`) sobre fragmentos únicos de cada patrón repetido, más un puñado de clases nuevas para los casos que ese truco no alcanza a cubrir (`.hero-collage`, `.avatarwrap`/`.avatar3d`, `.carousel-box`, `.caso-body`, `.sitenav`).
+
+- **Zoom apagado, `overflow: hidden` en la raíz.** Root a `width: 100%`; todo con `width: 1440px` a `100%`; secciones a `height: auto`.
+- **Grids a una columna** (`grid-template-columns: repeat(...)` → `1fr`) y **filas flex apiladas** (`flex-direction: column`), siempre con `align-items: stretch` — sin esto, un `align-items: flex-start`/`center` original hace que los hijos se encojan a su contenido en vez de ocupar el 100%, y basta un elemento sin restricción (una imagen que tarda en cargar, por ejemplo) para que todo el bloque se dispare de ancho. Fue la causa real de una sección que aparecía en blanco durante las pruebas.
+- **Cuidado con los shorthands normalizados por el navegador:** un selector `[style*="padding: 0 72px 72px 72px"]` nunca hace match porque el navegador serializa `0` como `0px` y además colapsa valores repetidos (`0 72px 72px 72px` → `0px 72px 72px`). Cuando el fragmento incluye un cero bare o valores que se puedan colapsar, mejor una clase real que un selector de atributo.
+- **Fotos y mockups compuestos** (hero del home, hero de cada caso, avatar de Quien soy): se simplifican a la imagen sola a ancho completo, sin los rectángulos decorativos ni etiquetas superpuestas que solo tenían sentido con el posicionamiento absoluto de escritorio.
+- **Carruseles coverflow** (`.coverslide`): en vez de reescribir la lógica, cada slide pasa a `position: absolute; inset: 0; width: 100%` — como solo el slide activo tiene `opacity: 1`, los demás quedan completamente tapados detrás sin necesidad de tocar el JS.
+- **Barra superior:** pasa a dos filas; la navegación se vuelve una tira horizontal con scroll (`overflow-x: auto`).
+- **Barra lateral de los casos** (`aside`): deja de ser sticky, y su `<nav>` de secciones pasa de lista vertical a pills envueltas (`flex-wrap: wrap`).
+- **Imágenes de pantallas/capturas:** `height: auto` en vez del alto fijo de escritorio, para que se vean completas y a buen tamaño sin recorte forzado.
+- **Visor a pantalla completa:** relleno y botones más chicos, imagen limitada con `vw`/`vh` en vez de porcentajes (evita depender del ancho real del contenedor).
+- Herramientas de prueba: Chrome headless por línea de comandos tiene un piso de ~500px de ancho aunque se pida menos con `--window-size`; para un viewport móvil real (390px) hubo que instalar `puppeteer-core` en el scratchpad y pilotar el mismo Chrome instalado vía CDP (`page.setViewport`), con `--allow-file-access-from-files` en los args del launch (si falta, las páginas cargadas por `file://` fallan por CORS).
 
 ## Lógica de los casos
 
@@ -48,13 +63,12 @@ Estructura común (skill `portafolio-casos-de-estudio`): hero en degradado del c
 - Fotos de Nexo ya incluidas; falta decidir si Nexo lleva botón de código.
 
 **Mejoras técnicas**
-1. Responsive real para móvil (hoy escala con `zoom`, mínimo 0.3).
-2. La prop `accent` no re-tiñe todo (morado fijo en cinta, fondo, `.edgeline`, enlaces).
-3. «Home» siempre activo en el menú (sin scroll-spy).
-4. Restos de edición: atributos `data-path-to-node` en la cursiva de "La La Land".
-5. Ortografía: «Kora» en títulos y «Köra» en un `alt`.
-6. Dependencia del runtime propio (`vendor/support.js`): el sitio solo se renderiza con él.
-7. Favicon y `404.html` para GitHub Pages.
+1. La prop `accent` no re-tiñe todo (morado fijo en cinta, fondo, `.edgeline`, enlaces).
+2. «Home» siempre activo en el menú (sin scroll-spy).
+3. Restos de edición: atributos `data-path-to-node` en la cursiva de "La La Land".
+4. Ortografía: «Kora» en títulos y «Köra» en un `alt`.
+5. Dependencia del runtime propio (`vendor/support.js`): el sitio solo se renderiza con él.
+6. Favicon y `404.html` para GitHub Pages.
 
 ## Historial de decisiones relevantes
 
@@ -69,3 +83,4 @@ Estructura común (skill `portafolio-casos-de-estudio`): hero en degradado del c
 - 2026-09-22: corregido el indicador de sección activa en los tres casos — la última fase (Reflexión) no se marcaba porque su borde nunca cruzaba el umbral de detección; ahora se fuerza al llegar al final de la página.
 - 2026-09-22: motion — fundido y elevación al cambiar entre proyectos UX-UI y 3D en el home (`.modeswitch`); transición suave en los puntos del menú lateral de los casos. Cursor del mockup UX-UI del home: "Ver proyectos UX-UI" en vez de "Ver caso".
 - 2026-09-22: fundido de cambio de modo aligerado a solo opacity (sin transform) para evitar un posible destello blanco al entrar a 3D con las 4 secciones (16 imágenes) animando a la vez.
+- 2026-09-22: sitio responsive para móvil (`@media (max-width: 860px)`) en las 4 páginas, sin tocar el layout de escritorio. Ver sección "Responsive (móvil)" más arriba.

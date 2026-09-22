@@ -24,6 +24,16 @@
 - **Cursor contextual.** Cualquier elemento con `data-cursor="…"` muestra un seguidor con esa etiqueta. Los botones sin enlace todavía usan «Estamos trabajando en ello».
 - **Escala.** Raíz fija de 1440 px; `fit()` aplica `zoom = min(1, ancho/1440)` por encima de 860 px. Por debajo, el CSS móvil desactiva el `zoom` y reordena el contenido (ver más abajo).
 
+## Idiomas (ES / EN)
+
+Selector `ES | EN` en la barra superior de las 4 páginas. Todo el texto visible existe dos veces en el mismo archivo: `<span class="l-es">…</span><span class="l-en">…</span>` (dentro de un SVG, `<tspan>`). La raíz lleva `data-lang` y el CSS decide cuál se ve; el visible usa `display: contents`, así que el layout no cambia. La elección se guarda en `localStorage` (`pf-lang`) y se mantiene al navegar entre páginas.
+
+- Lo que no es texto visible (`alt`, `aria-label`) viaja en `data-alt-en` / `data-aria-en` y se aplica sobre el DOM en `applyLang()`, que corre en `componentDidMount` y `componentDidUpdate`. React no lo pisa porque el valor en su virtual DOM no cambió.
+- Las etiquetas del cursor usan `data-cursor-en`; los textos que arma el JS (nombres de pantalla de los carruseles, avisos, título de la pestaña) tienen su variante inglesa en `renderVals()`.
+- La traducción mantiene longitudes parecidas al español para no romper la estética.
+- Herramientas en el scratchpad (`i18n-*.mjs`): extraen los tramos de texto con parse5, verifican que las etiquetas inline coincidan entre idiomas y avisan si algo queda sin traducir.
+- Pendiente: el texto que está dentro de las imágenes (diagramas y capturas de las apps) sigue en español.
+
 ## Responsive (móvil)
 
 `@media (max-width: 860px)` en las 4 páginas, sin tocar nada del layout de escritorio (que sigue igual arriba de ese ancho). Estrategia: no se reescribió el markup, se sobrescriben con `!important` los estilos inline fijos del diseño de escritorio, usando selectores de atributo (`[style*="..."]`) sobre fragmentos únicos de cada patrón repetido, más un puñado de clases nuevas para los casos que ese truco no alcanza a cubrir (`.hero-collage`, `.hero-shots`, `.avatarwrap`/`.avatar3d`, `.carousel-box`, `.caso-body`, `.sitenav`).
@@ -86,3 +96,4 @@ Estructura común (skill `portafolio-casos-de-estudio`): hero en degradado del c
 - 2026-09-22: fundido de cambio de modo aligerado a solo opacity (sin transform) para evitar un posible destello blanco al entrar a 3D con las 4 secciones (16 imágenes) animando a la vez.
 - 2026-09-22: sitio responsive para móvil (`@media (max-width: 860px)`) en las 4 páginas, sin tocar el layout de escritorio. Ver sección "Responsive (móvil)" más arriba.
 - 2026-09-22: móvil rehecho tras revisarlo a tamaño real (390px, pantalla por pantalla): los casos seguían escalados con zoom (texto diminuto) y ahora no; menú completo visible sin scroll; foto del hero y avatar otra vez sobre su bloque de color; hero de cada caso con las tres capturas en abanico (Nexo: principal arriba y dos debajo); ficha en 2x2; en Diseño el texto va antes de las capturas; Pruebas e Iteraciones mantienen las imágenes lado a lado; carruseles del home con etiqueta y puntos compactos. Verificado sin desbordes a 360, 390 y 430px.
+- 2026-09-22: portafolio bilingüe (ES/EN) con selector en la barra superior; todo el contenido traducido dentro del mismo archivo.
